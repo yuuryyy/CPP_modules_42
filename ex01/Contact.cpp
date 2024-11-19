@@ -11,7 +11,6 @@ Contact::Contact()
 }
 
 
-
 Contact::~Contact()
 {
 	this->FirstName = "";
@@ -20,7 +19,6 @@ Contact::~Contact()
 	this->PhoneNumber = "";
 	this->DarkestSecret = "";
 }
-
 
 
 void	Contact::SetContactField(std::string ContactInfo, int flag)
