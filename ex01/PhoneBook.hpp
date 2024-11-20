@@ -12,10 +12,13 @@ class PhoneBook
 		~PhoneBook();
 
 		void Add(int index);
-		void Search();
+		void Search(int ContactNum);
 		void Exit();
 		void Other();
 };
 
+bool 	IsAllDigit(const std::string& str);
+bool	IsWhiteSpace(const std::string& str);
+void    DisplayFill(Contact& contact, std::string msg, int flag);
 
 #endif

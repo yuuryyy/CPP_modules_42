@@ -31,6 +31,8 @@ class Contact
 		~Contact();
 
 		void SetContactField(std::string ContactInfo, int flag);
+		void DisplaySearch(int index);
+		void DisplayInfo();
 };
 
 #endif
