@@ -1,0 +1,16 @@
+* first we alaiased a vector of accout::t holding accounts under the name of accounts_t;
+* we did the same but this time a vector of ints under the alaias ints_t;
+* we alaiased a pair of iterator for the previous two templates holding accounts and ints under the name of acc_int_t;
+
+* we declared a const array of integers called amounts and initialized it with 8 amounts;
+* the we calculate the size of the array using sizeof(amounts) / sizeof(int) this will give us the number of elements;
+* then we declare accounts_t accounts as a vector of accounts and we assign amounts as the beginning
+	and amounts + size as the end of the vector;
+* then we declare two itirators for the accounts vector one for the beginning and other for the end;
+
+* we declare an array of integers representings deposints for each of the accounts d[];
+* we get its size d_size;
+* then we declare an alias type ints_t as a vector of ints to hold the deposits called deposits then we directly
+	initialize it with the array of ints mentioned above as a beginning and the last of the array as the end of the vector;
+
+* the same steps are done to declare withdrawl ;
