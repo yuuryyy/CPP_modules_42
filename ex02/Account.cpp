@@ -1,5 +1,6 @@
 #include "Account.hpp"
 #include <iostream>
+#include <unistd.h> 
 #include <ctime>
 
 
@@ -108,7 +109,5 @@ Account::~Account( void )
 {
 	_displayTimestamp();
 	std::cout << " index:" << _accountIndex << ";amount:" << checkAmount() << ";closed" << std::endl;
-	// _nbAccounts--;
-	// _totalAmount -= checkAmount();
-	// _amount = 0;
+	_nbAccounts--;
 }
