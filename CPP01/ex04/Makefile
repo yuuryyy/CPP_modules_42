@@ -8,8 +8,8 @@ COMPILER	:= c++
 
 HEADERS		:=	SedIsFolosers.hpp \
 
-FLAGS		:= -Wall -Wextra   -std=c++98
-#-Werror
+FLAGS		:= -Wall -Wextra -Werror  -std=c++98
+
 OBG			:= $(SRC:.cpp=.o)
 
 

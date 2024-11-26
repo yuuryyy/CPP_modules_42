@@ -40,19 +40,28 @@ void	Harl::error( void )
 void	Harl::complain( std::string level )
 {
 	void (Harl::*funptr)(void) = NULL;
+	std::string		levels[] = {"DEBUG", "INFO","WARNING", "ERROR"};
+	int				i = 0;
 
-	if (level == "DEBUG")
-		funptr = &Harl::debug;
-	else if (level == "INFO")  
-		funptr = &Harl::info;
-	else if (level == "WARNING")
-		funptr = &Harl::warning;
-	else if (level == "ERROR")
-		funptr = &Harl::error;
-	else
+	while (levels[i].compare(level) != 0)
+		i++;
+	switch(i)
 	{
-		std::cerr << "UNKOWN LEVEL !." << std::endl;
-		return ;
+		case 0:
+			funptr = &Harl::debug;
+			break ;
+		case 1:
+			funptr = &Harl::info;
+			break;
+		case 2:
+			funptr = &Harl::warning;
+			break;
+		case 3:
+			funptr = &Harl::error;
+			break ;
+		default:
+			std::cerr << "UNKOWN LEVEL !." << std::endl;
+			return ;
 	}
 	(this->*funptr)();
 }

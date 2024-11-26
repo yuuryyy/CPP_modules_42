@@ -9,6 +9,6 @@ int	main()
 	myObj.complain("WARNING");
 	myObj.complain("ERROR");
 	myObj.complain("ELSE");
-	
+
 	return 0;
 }
