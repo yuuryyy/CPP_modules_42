@@ -11,7 +11,7 @@ COMPILER	:= c++
 HEADERS		:=	PhoneBook.hpp \
 				Contact.hpp \
 
-FLAGS		:= -Wall -Wextra -Werror  -std=c++98 -fsanitize=address -g
+FLAGS		:= -Wall -Wextra -Werror  -std=c++98
 
 OBG			:= $(SRC:.cpp=.o)
 
