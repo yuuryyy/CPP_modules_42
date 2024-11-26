@@ -1,15 +1,15 @@
-NAME 		:=	BraiiiiiiiiinzzzzZ
+NAME 		:=	SedIsFolosers
+
+SRC			:=	SedIsFolosers.cpp \
+				main.cpp \
+
 
 COMPILER	:= c++
-FLAGS		:= -Wall -Wextra -Werror  -std=c++98 -fsanitize=address -g
 
-HEADERS		:=	Zombie.hpp
+HEADERS		:=	SedIsFolosers.hpp \
 
-SRC			:=	main.cpp\
-				Zombie.cpp\
-				newZombie.cpp\
-			 	randomChump.cpp \
-
+FLAGS		:= -Wall -Wextra   -std=c++98
+#-Werror
 OBG			:= $(SRC:.cpp=.o)
 
 

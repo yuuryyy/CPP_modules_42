@@ -1,14 +1,18 @@
-NAME 		:=	BraiiiiiiiiinzzzzZ
+NAME 		:=	Unnecessary_violence
+
+SRC			:=	main.cpp \
+				HumanA.cpp\
+				HumanB.cpp \
+				Weapon.cpp  \
 
 COMPILER	:= c++
-FLAGS		:= -Wall -Wextra -Werror  -std=c++98 -fsanitize=address -g
 
-HEADERS		:=	Zombie.hpp
 
-SRC			:=	main.cpp\
-				Zombie.cpp\
-				newZombie.cpp\
-			 	randomChump.cpp \
+HEADERS		:=	Weapon.hpp \
+				HumanA.hpp  \
+				HumanB.hpp   \
+
+FLAGS		:= -Wall -Wextra -Werror  -std=c++98
 
 OBG			:= $(SRC:.cpp=.o)
 

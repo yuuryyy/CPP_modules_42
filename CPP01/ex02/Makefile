@@ -15,7 +15,7 @@ all	:  $(NAME)
  $(NAME) : $(OBG)
 	$(COMPILER) $(FLAGS) $(OBG) -o $(NAME)
 
-%.o: %.cpp  $(HEADERS)
+%.o: %.cpp
 	$(COMPILER) $(FLAGS) -c $< -o $@
 
 clean :

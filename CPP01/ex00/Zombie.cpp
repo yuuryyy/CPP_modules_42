@@ -18,3 +18,6 @@ void	Zombie::announce( void )
 	std::cout << "BraiiiiiiinnnzzzZ..";
 	std::cout << std::endl;
 }
+
+Zombie::Zombie( void )
+{}
