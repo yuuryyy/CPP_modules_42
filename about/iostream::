@@ -1,0 +1,18 @@
+for infile opening ======> std::ifstream infile
+for outfile opening ======> std::ofstream outfilefile
+
+setting flags to specify different file opening modes.
+
+we use the open() member function of the ifstream and ofstream classes. 
+we pass the filename as the first argument and a set of flags as the second argument.
+
+Here are some common flags:
+
+std::ios::in: Open for input operations.
+std::ios::out: Open for output operations.
+std::ios::app: Open for appending to the end of the file.
+std::ios::trunc: Truncate the file to zero length on open.
+std::ios::binary: Open the file in binary mode.
+
+example:
+	std::fstream file("my_file.txt", std::ios::in | std::ios::out);

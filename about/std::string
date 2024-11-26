@@ -1,0 +1,77 @@
+						| std::string Member Functions |
+						 -----------------------------
+
+Input/Output Functions
+-----------------------
+push_back(): Inserts a character at the end of the string.
+pop_back(): Removes the last character from the string.
+
+
+Capacity Functions
+------------------
+size(): Returns the number of characters in the string.
+length(): Returns the number of characters in the string.
+capacity(): Returns the maximum number of characters that can be stored in the string without increasing its memory allocation.
+max_size(): Returns the maximum number of characters that can be stored in the string.
+resize(): Changes the size of the string, either truncating characters from the end or inserting new characters.
+reserve(): Requests a change in capacity.
+
+
+Access Functions
+-----------------
+at(): Returns a reference to the character at a specified position in the string.
+operator[](): Returns a reference to the character at a specified position in the string.
+front(): Returns a reference to the first character in the string.
+back(): Returns a reference to the last character in the string.
+data(): Returns a pointer to the character array.
+c_str(): Returns a pointer to the character array.
+
+
+Modification Functions
+-----------------------
+assign(): Assigns a new value to the string.
+append(): Appends characters to the end of the string.
+insert(): Inserts characters into the string at a specified position.
+erase(): Removes characters from the string.
+replace(): Replaces characters in the string with new characters.
+swap(): Swaps the contents of two strings.
+
+
+Search Functions
+-------------------
+find(): Searches for a substring in the string.
+rfind(): Searches for a substring in the string, starting from the end.
+find_first_of(): Searches for the first occurrence of any character in a specified string.
+find_last_of(): Searches for the last occurrence of any character in a specified string.
+find_first_not_of(): Searches for the first occurrence of any character not in a specified string.
+find_last_not_of(): Searches for the last occurrence of any character not in a specified string.
+
+
+Comparison Functions
+-----------------------
+compare(): Compares the string with another string.
+operator==(): Compares the string with another string.
+operator!=(): Compares the string with another string.
+operator<(): Compares the string with another string.
+operator>(): Compares the string with another string.
+operator<=(): Compares the string with another string.
+operator>=(): Compares the string with another string.
+
+
+Iterator Functions
+-----------------------
+begin(): Returns an iterator pointing to the beginning of the string.
+end(): Returns an iterator pointing to the end of the string.
+rbegin(): Returns a reverse iterator pointing to the end of the string.
+rend(): Returns a reverse iterator pointing to the beginning of the string.
+cbegin(): Returns a constant iterator pointing to the beginning of the string.
+cend(): Returns a constant iterator pointing to the end of the string.
+crbegin(): Returns a constant reverse iterator pointing to the end of the string.
+crend(): Returns a constant reverse iterator pointing to the beginning of the string.
+
+
+Miscellaneous Functions
+-------------------------
+empty(): Returns whether the string is empty.
+clear(): Clears the contents of the string.
+get_allocator(): Returns the allocator object used by the string.
