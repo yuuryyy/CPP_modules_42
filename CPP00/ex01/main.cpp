@@ -1,5 +1,4 @@
 
-#include <iostream>
 #include "PhoneBook.hpp"
 
 int	main(int ac, char **av)
@@ -19,12 +18,25 @@ int	main(int ac, char **av)
 	{
 		std::cout << MAGENTA << "------------------------> enter an option : " << RESET ;
 		std::getline(std::cin, buffer);
-		if (buffer.compare("ADD") == 0)
-			phonebook.Add(++ContactNum);
-		else if (buffer.compare("SEARCH") == 0)
-			phonebook.Search(ContactNum);
-		else if (buffer.compare("EXIT") == 0)
-			phonebook.Exit();
+
+		if (std::cin.eof() || std::cin.fail())
+			return phonebook.Exit();
+
+		if (buffer == "ADD")
+		{
+			if (phonebook.Add(++ContactNum) == false)
+				return phonebook.Exit();
+		}
+
+		else if (buffer == "SEARCH")
+		{
+			if (phonebook.Search(ContactNum) == false)
+				return phonebook.Exit();
+		}
+
+		else if (buffer == "EXIT")
+			return phonebook.Exit();
+
 		else
 			phonebook.Other();
 	}

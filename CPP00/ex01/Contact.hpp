@@ -2,6 +2,9 @@
 #define CONTACT_HPP
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 #define FNAME  0
 #define LNAME  1

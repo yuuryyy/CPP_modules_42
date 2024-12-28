@@ -4,8 +4,10 @@ bool IsWhiteSpace(const std::string& str)
 {
 
     for(size_t i = 0; i < str.length(); i++)
-        if (!std::isspace(str[i]))
+    {
+        if (!std::isspace(str[i]) && std::isalnum(str[i]))
             return (false);
+    }
 
     return (true);
 }
@@ -21,7 +23,7 @@ bool IsAllDigit(const std::string& str)
     return (true);
 }
 
-void    DisplayFill(Contact& contact,const std::string msg, int flag)
+bool    DisplayFill(Contact& contact,const std::string msg, int flag)
 {
     std::string GetInfo;
 
@@ -30,9 +32,12 @@ void    DisplayFill(Contact& contact,const std::string msg, int flag)
         std::cout << msg;
         std::getline(std::cin, GetInfo);
 
+        if (std::cin.eof() || std::cin.fail())
+            return (false);
+
         if (GetInfo.empty() || IsWhiteSpace(GetInfo))
         {
-            std::cerr << RED"\n*This can't be an empty field !!*" RESET << std::endl;
+            std::cerr << RED"\n*This can't be an empty field/contains unprintable characters !!*" RESET << std::endl;
             continue;
         }
 
@@ -45,7 +50,9 @@ void    DisplayFill(Contact& contact,const std::string msg, int flag)
 			}
 
             contact.SetContactField(GetInfo, flag);
-            return ;
+            return true;
         }
     }
+
+    return true;
 }

@@ -11,14 +11,14 @@ class PhoneBook
 		PhoneBook();
 		~PhoneBook();
 
-		void Add(int index);
-		void Search(int ContactNum);
-		void Exit();
+		bool Add(int index);
+		bool Search(int ContactNum);
+		int Exit();
 		void Other();
 };
 
 bool 	IsAllDigit(const std::string& str);
 bool	IsWhiteSpace(const std::string& str);
-void    DisplayFill(Contact& contact, std::string msg, int flag);
+bool    DisplayFill(Contact& contact, std::string msg, int flag);
 
 #endif
