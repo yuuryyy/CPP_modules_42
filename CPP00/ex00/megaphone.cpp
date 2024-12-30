@@ -7,13 +7,14 @@ int main(int ac, char **av)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
 	{
+		std::string	string;
 		for (int i = 1; av[i]; i++)
 		{
-			for (int k = 0; av[i][k]; k++)
+			string = av[i];
+			for (int k = 0; k < string.length(); k++)
 			{
-				if (av[i][k] <= 'z' && av[i][k] >= 'a')
-					av[i][k] -= 32;
-				std::cout << av[i][k];
+				string[k] = toupper(string[k]);
+				std::cout << string[k];
 			}
 		}
 		std::cout << std::endl;
