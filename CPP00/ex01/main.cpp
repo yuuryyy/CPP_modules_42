@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	while (true)
 	{
 		std::cout << MAGENTA << "------------------------> enter an option : " << RESET ;
-		std::getline(std::cin, buffer);
+		std::cin >> buffer;
 
 		if (std::cin.eof() || std::cin.fail())
 			return phonebook.Exit();

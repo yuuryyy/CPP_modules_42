@@ -11,8 +11,8 @@ bool    PhoneBook::promptNset(Contact& contact,const std::string msg,int flag)
     while (true)
     {
         std::cout << msg;
-        getline(std::cin, GetInfo);
-		std::cout << "heere\n";
+		std::cin >> GetInfo;
+
         if (std::cin.eof() || std::cin.fail())
             return (false);
 
@@ -99,34 +99,27 @@ bool	PhoneBook::Search(int ContactNum)
 		ContactNum = 7;
 
 	for(int i = 0; i <= ContactNum; i++)
-	{
 		this->contacts[i].DisplaySearch(i);
-	}
 
 	std::string	GetIndex;
 
 	while (true)
 	{
 		std::cout << "\nEnter the index of the entry to display : ";
-		getline(std::cin, GetIndex);;
+		std::cin >> GetIndex;
 
 		if (std::cin.eof() || std::cin.fail())
 			return false;
-
 		if (!this->inputParser(GetIndex, true) || GetIndex.length() > 1)
 		{
 			std::cerr << RED"\n*Invalid index !!*" RESET << std::endl;
 			continue ;
 		}
-
 		std::stringstream	str(GetIndex);
 		int					index;
-
 		str >> index;
 		if (index > ContactNum)
-			std::cerr << RED"\n*The index " << GetIndex
-				<< " is out of range/wrong*" RESET << std::endl;
-
+			std::cerr << RED"\n*The index " << GetIndex	<< " is out of range/wrong*" RESET << std::endl;
 		else
 		{
 			this->contacts[index].DisplayInfo();

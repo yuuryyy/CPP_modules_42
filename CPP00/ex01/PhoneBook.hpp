@@ -7,15 +7,16 @@ class PhoneBook
 {
 	private:
 		Contact	contacts[8];
+		bool promptNset(Contact& contact,const std::string msg,int flag);
+		bool inputParser(const std::string& input, bool num);
+
 	public:
 		PhoneBook();
 		~PhoneBook();
 
 		bool Add(int index);
-		bool promptNset(Contact& contact,const std::string msg,int flag);
 		bool Search(int ContactNum);
 		int Exit();
-		bool inputParser(const std::string& input, bool num);
 		void Other();
 };
 
