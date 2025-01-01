@@ -3,7 +3,6 @@ NAME 		:=	phonebook
 SRC			:=	PhoneBook.cpp \
 				Contact.cpp \
 				main.cpp \
-				Add.cpp \
 
 
 COMPILER	:= c++
@@ -11,7 +10,7 @@ COMPILER	:= c++
 HEADERS		:=	PhoneBook.hpp \
 				Contact.hpp \
 
-FLAGS		:= -Wall -Wextra -Werror  -std=c++98
+FLAGS		:= -Wall -Wextra -Werror  -std=c++98 -g -fsanitize=address
 
 OBG			:= $(SRC:.cpp=.o)
 

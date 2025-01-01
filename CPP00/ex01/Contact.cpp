@@ -21,7 +21,7 @@ Contact::~Contact()
 }
 
 
-void	Contact::SetContactField(std::string ContactInfo, int flag)
+void	Contact::SetContactField(const std::string& ContactInfo, int flag)
 {
 	if (flag == FNAME)
 		this->FirstName = ContactInfo;

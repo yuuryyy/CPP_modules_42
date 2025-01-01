@@ -12,13 +12,12 @@ class PhoneBook
 		~PhoneBook();
 
 		bool Add(int index);
+		bool promptNset(Contact& contact,const std::string msg,int flag);
 		bool Search(int ContactNum);
 		int Exit();
+		bool inputParser(const std::string& input, bool num);
 		void Other();
 };
 
-bool 	IsAllDigit(const std::string& str);
-bool	IsWhiteSpace(const std::string& str);
-bool    DisplayFill(Contact& contact, std::string msg, int flag);
 
 #endif

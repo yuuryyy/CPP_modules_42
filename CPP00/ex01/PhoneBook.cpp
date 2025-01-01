@@ -4,21 +4,84 @@ PhoneBook::PhoneBook(){}
 
 PhoneBook::~PhoneBook(){}
 
+bool    PhoneBook::promptNset(Contact& contact,const std::string msg,int flag)
+{
+    std::string GetInfo;
+
+    while (true)
+    {
+        std::cout << msg;
+        getline(std::cin, GetInfo);
+		std::cout << "heere\n";
+        if (std::cin.eof() || std::cin.fail())
+            return (false);
+
+       if (flag == NUM && !this->inputParser(GetInfo, true))
+        {
+        	std::cerr << RED"\n*Phone number should only contain digits!!*" RESET << std::endl;
+			continue ;
+		}
+        else if (!this->inputParser(GetInfo, false))
+        {
+        	std::cerr << RED"\n* Invalid information!!*" RESET << std::endl;
+			continue ;
+        }
+        contact.SetContactField(GetInfo, flag);
+        return true;
+
+    }
+
+    return true;
+}
+
 bool    PhoneBook::Add(int index)
 {
-    if (DisplayFill(this->contacts[index], "\n=> Enter the First name : ", FNAME) == false)
+
+	int i = index;
+
+	if (index > 7)
+		i = index - 8;
+    if (!this->promptNset(this->contacts[i], "\n=> Enter the First name : ", FNAME))
 		return false;
-    if (DisplayFill(this->contacts[index], "\n=> Enter the Last name : ", LNAME) == false)
+    if (!this->promptNset(this->contacts[i], "\n=> Enter the Last name : ", LNAME))
 		return false;
-    if (DisplayFill(this->contacts[index], "\n=> Enter the Nickname : ", NNAME) == false)
+    if (!this->promptNset(this->contacts[i], "\n=> Enter the Nickname : ", NNAME))
 		return false;
-    if (DisplayFill(this->contacts[index], "\n=> Enter the Phone number : ", NUM) == false)
+    if (!this->promptNset(this->contacts[i], "\n=> Enter the Phone number : ", NUM))
 		return false;
-    if (DisplayFill(this->contacts[index], "\n=> Enter the Darkest secret : ", SECRET) == false)
+    if (!this->promptNset(this->contacts[i], "\n=> Enter the Darkest secret : ", SECRET))
 		return false;
 	return true;
 }
 
+
+bool	PhoneBook::inputParser(const std::string& input, bool num)
+{
+	size_t	i = 0;
+
+	if (input.empty())
+		return false;
+
+	for(i = 0; i < input.length(); i++)
+    {
+        if (!std::isspace(input[i]) && std::isalnum(input[i]))
+            break ;
+    }
+
+	for(i = 0; i < input.length(); i++)
+    {
+        if (!std::isspace(input[i]) && !std::isalnum(input[i]))
+			return false;
+    }
+
+	if (num)
+	{
+		for(i = 0; i < input.length(); i++)
+        	if (!std::isdigit(input[i]))
+            	return false;
+	}
+	return true;
+}
 
 bool	PhoneBook::Search(int ContactNum)
 {
@@ -32,6 +95,9 @@ bool	PhoneBook::Search(int ContactNum)
 	std::cout << "      |  Index   |First name|Last name | Nikname  |    " << std::endl;
 	std::cout << "-------------------------------------------------------" << std::endl;
 
+	if (ContactNum > 7)
+		ContactNum = 7;
+
 	for(int i = 0; i <= ContactNum; i++)
 	{
 		this->contacts[i].DisplaySearch(i);
@@ -42,15 +108,14 @@ bool	PhoneBook::Search(int ContactNum)
 	while (true)
 	{
 		std::cout << "\nEnter the index of the entry to display : ";
-		std::getline(std::cin, GetIndex);
+		getline(std::cin, GetIndex);;
 
 		if (std::cin.eof() || std::cin.fail())
 			return false;
 
-		if (GetIndex.empty() ||  !IsAllDigit(GetIndex)
-			|| IsWhiteSpace(GetIndex) || GetIndex.length() > 1)
+		if (!this->inputParser(GetIndex, true) || GetIndex.length() > 1)
 		{
-			std::cerr << RED"\n*Invalid character/out of range !!*" RESET << std::endl;
+			std::cerr << RED"\n*Invalid index !!*" RESET << std::endl;
 			continue ;
 		}
 
