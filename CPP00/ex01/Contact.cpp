@@ -3,36 +3,36 @@
 
 Contact::Contact()
 {
-	this->FirstName = "";
-	this->LastName = "";
-	this->Nickname = "";
-	this->PhoneNumber = "";
-	this->DarkestSecret = "";
+	this->_FirstName = "";
+	this->_LastName = "";
+	this->_Nickname = "";
+	this->_PhoneNumber = "";
+	this->_DarkestSecret = "";
 }
 
 
 Contact::~Contact()
 {
-	this->FirstName = "";
-	this->LastName = "";
-	this->Nickname = "";
-	this->PhoneNumber = "";
-	this->DarkestSecret = "";
+	this->_FirstName = "";
+	this->_LastName = "";
+	this->_Nickname = "";
+	this->_PhoneNumber = "";
+	this->_DarkestSecret = "";
 }
 
 
 void	Contact::SetContactField(const std::string& ContactInfo, int flag)
 {
 	if (flag == FNAME)
-		this->FirstName = ContactInfo;
+		this->_FirstName = ContactInfo;
 	else if (flag == LNAME)
-		this->LastName = ContactInfo;
+		this->_LastName = ContactInfo;
 	else if (flag == NNAME)
-		this->Nickname = ContactInfo;
+		this->_Nickname = ContactInfo;
 	else if (flag == NUM)
-		this->PhoneNumber = ContactInfo;
+		this->_PhoneNumber = ContactInfo;
 	else if (flag == SECRET)
-		this->DarkestSecret = ContactInfo;
+		this->_DarkestSecret = ContactInfo;
 }
 
 std::string	TruncateString(const std::string& str)
@@ -53,15 +53,15 @@ std::string	TruncateString(const std::string& str)
 
 void	Contact::DisplaySearch(int index)
 {
-	std::cout << "      |    " << index << "     |" << TruncateString(this->FirstName)
-	<< TruncateString(this->LastName) << TruncateString(this->Nickname) << std::endl;
+	std::cout << "      |    " << index << "     |" << TruncateString(this->_FirstName)
+	<< TruncateString(this->_LastName) << TruncateString(this->_Nickname) << std::endl;
 }
 
 void	Contact::DisplayInfo()
 {
-	std::cout << MAGENTA "\nFirst name 	 : " RESET << this->FirstName << std::endl;
-	std::cout << MAGENTA "Last name  	 : " RESET << this->LastName << std::endl;
-	std::cout << MAGENTA "Nickname   	 : " RESET << this->Nickname << std::endl;
-	std::cout << MAGENTA "Phone number     : " RESET << this->PhoneNumber << std::endl;
-	std::cout << MAGENTA "Darkest secret   : " RESET << this->DarkestSecret + "\n" << std::endl;
+	std::cout << MAGENTA "\nFirst name 	 : " RESET << this->_FirstName << std::endl;
+	std::cout << MAGENTA "Last name  	 : " RESET << this->_LastName << std::endl;
+	std::cout << MAGENTA "Nickname   	 : " RESET << this->_Nickname << std::endl;
+	std::cout << MAGENTA "Phone number     : " RESET << this->_PhoneNumber << std::endl;
+	std::cout << MAGENTA "Darkest secret   : " RESET << this->_DarkestSecret + "\n" << std::endl;
 }

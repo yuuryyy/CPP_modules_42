@@ -4,7 +4,7 @@ PhoneBook::PhoneBook(){}
 
 PhoneBook::~PhoneBook(){}
 
-bool    PhoneBook::promptNset(Contact& contact,const std::string msg,int flag)
+bool    PhoneBook::_promptNset(Contact& contact,const std::string msg,int flag)
 {
     std::string GetInfo;
 
@@ -16,12 +16,12 @@ bool    PhoneBook::promptNset(Contact& contact,const std::string msg,int flag)
         if (std::cin.eof() || std::cin.fail())
             return (false);
 
-       if (flag == NUM && !this->inputParser(GetInfo, true))
+       if (flag == NUM && !this->_inputParser(GetInfo, true))
         {
         	std::cerr << RED"\n*Phone number should only contain digits!!*" RESET << std::endl;
 			continue ;
 		}
-        else if (!this->inputParser(GetInfo, false))
+        else if (!this->_inputParser(GetInfo, false))
         {
         	std::cerr << RED"\n* Invalid information!!*" RESET << std::endl;
 			continue ;
@@ -41,32 +41,26 @@ bool    PhoneBook::Add(int index)
 
 	if (index > 7)
 		i = index - 8;
-    if (!this->promptNset(this->contacts[i], "\n=> Enter the First name : ", FNAME))
+    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the First name : ", FNAME))
 		return false;
-    if (!this->promptNset(this->contacts[i], "\n=> Enter the Last name : ", LNAME))
+    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the Last name : ", LNAME))
 		return false;
-    if (!this->promptNset(this->contacts[i], "\n=> Enter the Nickname : ", NNAME))
+    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the _Nickname : ", NNAME))
 		return false;
-    if (!this->promptNset(this->contacts[i], "\n=> Enter the Phone number : ", NUM))
+    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the Phone number : ", NUM))
 		return false;
-    if (!this->promptNset(this->contacts[i], "\n=> Enter the Darkest secret : ", SECRET))
+    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the Darkest secret : ", SECRET))
 		return false;
 	return true;
 }
 
 
-bool	PhoneBook::inputParser(const std::string& input, bool num)
+bool	PhoneBook::_inputParser(const std::string& input, bool num)
 {
 	size_t	i = 0;
 
 	if (input.empty())
 		return false;
-
-	for(i = 0; i < input.length(); i++)
-    {
-        if (!std::isspace(input[i]) && std::isalnum(input[i]))
-            break ;
-    }
 
 	for(i = 0; i < input.length(); i++)
     {
@@ -99,7 +93,7 @@ bool	PhoneBook::Search(int ContactNum)
 		ContactNum = 7;
 
 	for(int i = 0; i <= ContactNum; i++)
-		this->contacts[i].DisplaySearch(i);
+		this->_contacts[i].DisplaySearch(i);
 
 	std::string	GetIndex;
 
@@ -110,7 +104,7 @@ bool	PhoneBook::Search(int ContactNum)
 
 		if (std::cin.eof() || std::cin.fail())
 			return false;
-		if (!this->inputParser(GetIndex, true) || GetIndex.length() > 1)
+		if (!this->_inputParser(GetIndex, true) || GetIndex.length() > 1)
 		{
 			std::cerr << RED"\n*Invalid index !!*" RESET << std::endl;
 			continue ;
@@ -122,7 +116,7 @@ bool	PhoneBook::Search(int ContactNum)
 			std::cerr << RED"\n*The index " << GetIndex	<< " is out of range/wrong*" RESET << std::endl;
 		else
 		{
-			this->contacts[index].DisplayInfo();
+			this->_contacts[index].DisplayInfo();
 			break ;
 		}
 	}

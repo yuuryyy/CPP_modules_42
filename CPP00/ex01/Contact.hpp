@@ -24,11 +24,11 @@
 class Contact
 {
 	private:
-		std::string	FirstName;
-		std::string	LastName;
-		std::string	Nickname;
-		std::string	PhoneNumber;
-		std::string	DarkestSecret;
+		std::string	_FirstName;
+		std::string	_LastName;
+		std::string	_Nickname;
+		std::string	_PhoneNumber;
+		std::string	_DarkestSecret;
 	public:
 		Contact();
 		~Contact();

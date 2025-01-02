@@ -6,9 +6,9 @@
 class PhoneBook
 {
 	private:
-		Contact	contacts[8];
-		bool promptNset(Contact& contact,const std::string msg,int flag);
-		bool inputParser(const std::string& input, bool num);
+		Contact	_contacts[8];
+		bool _promptNset(Contact& contact,const std::string msg,int flag);
+		bool _inputParser(const std::string& input, bool num);
 
 	public:
 		PhoneBook();
