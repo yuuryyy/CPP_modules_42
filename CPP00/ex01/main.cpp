@@ -5,7 +5,7 @@ int	main(int ac, char **av)
 {
 	std::string	buffer;
 	PhoneBook	phonebook;
-	int			ContactNum;
+	int			index;
 	(void)av;
 
 	if (ac != 1)
@@ -13,7 +13,7 @@ int	main(int ac, char **av)
 		std::cerr << RED"Error: No arguments are required." << std::endl;
 		return (1);
 	}
-	ContactNum = -1;
+	index = -1;
 	while (true)
 	{
 		std::cout << MAGENTA << "------------------------> enter an option : " << RESET ;
@@ -21,16 +21,15 @@ int	main(int ac, char **av)
 
 		if (std::cin.eof() || std::cin.fail())
 			return phonebook.Exit();
-
 		if (buffer == "ADD")
 		{
-			if (phonebook.Add(++ContactNum) == false)
+			if (phonebook.Add(++index) == false)
 				return phonebook.Exit();
 		}
 
 		else if (buffer == "SEARCH")
 		{
-			if (phonebook.Search(ContactNum) == false)
+			if (phonebook.Search() == false)
 				return phonebook.Exit();
 		}
 
@@ -39,7 +38,9 @@ int	main(int ac, char **av)
 
 		else
 			phonebook.Other();
+
+		if (index == 7)
+			index = 0;
 	}
 	return (0);
 }
-

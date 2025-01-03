@@ -1,5 +1,8 @@
 #include "PhoneBook.hpp"
 
+
+int PhoneBook::_ContactsNb = 0;
+
 PhoneBook::PhoneBook(){}
 
 PhoneBook::~PhoneBook(){}
@@ -37,20 +40,17 @@ bool    PhoneBook::_promptNset(Contact& contact,const std::string msg,int flag)
 bool    PhoneBook::Add(int index)
 {
 
-	int i = index;
-
-	if (index > 7)
-		i = index - 8;
-    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the First name : ", FNAME))
+    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the First name : ", FNAME))
 		return false;
-    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the Last name : ", LNAME))
+    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the Last name : ", LNAME))
 		return false;
-    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the _Nickname : ", NNAME))
+    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the _Nickname : ", NNAME))
 		return false;
-    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the Phone number : ", NUM))
+    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the Phone number : ", NUM))
 		return false;
-    if (!this->_promptNset(this->_contacts[i], "\n=> Enter the Darkest secret : ", SECRET))
+    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the Darkest secret : ", SECRET))
 		return false;
+	_ContactsNb++;
 	return true;
 }
 
@@ -77,10 +77,10 @@ bool	PhoneBook::_inputParser(const std::string& input, bool num)
 	return true;
 }
 
-bool	PhoneBook::Search(int ContactNum)
+bool	PhoneBook::Search()
 {
 
-	if (ContactNum == -1)
+	if (_ContactsNb == 0)
 	{
 		std::cout << "* There are no saved Contacts yet !!! *" << std::endl;
 		return true;
@@ -89,34 +89,34 @@ bool	PhoneBook::Search(int ContactNum)
 	std::cout << "      |  Index   |First name|Last name | Nikname  |    " << std::endl;
 	std::cout << "-------------------------------------------------------" << std::endl;
 
-	if (ContactNum > 7)
-		ContactNum = 7;
+	if (_ContactsNb > 8)
+		_ContactsNb = 8;
 
-	for(int i = 0; i <= ContactNum; i++)
+	for(int i = 0; i < _ContactsNb; i++)
 		this->_contacts[i].DisplaySearch(i);
 
-	std::string	GetIndex;
+	int GetIndex;
 
 	while (true)
 	{
 		std::cout << "\nEnter the index of the entry to display : ";
 		std::cin >> GetIndex;
 
-		if (std::cin.eof() || std::cin.fail())
+		if (std::cin.eof())
 			return false;
-		if (!this->_inputParser(GetIndex, true) || GetIndex.length() > 1)
+
+		if (std::cin.fail())
 		{
-			std::cerr << RED"\n*Invalid index !!*" RESET << std::endl;
-			continue ;
+				std::cin.clear();
+				std::cin.ignore(1000, '\n');
+				continue;
 		}
-		std::stringstream	str(GetIndex);
-		int					index;
-		str >> index;
-		if (index > ContactNum)
+
+		if (GetIndex > _ContactsNb - 1)
 			std::cerr << RED"\n*The index " << GetIndex	<< " is out of range/wrong*" RESET << std::endl;
 		else
 		{
-			this->_contacts[index].DisplayInfo();
+			this->_contacts[GetIndex].DisplayInfo();
 			break ;
 		}
 	}
