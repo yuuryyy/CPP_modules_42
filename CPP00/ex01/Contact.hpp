@@ -29,13 +29,16 @@ class Contact
 		std::string	_Nickname;
 		std::string	_PhoneNumber;
 		std::string	_DarkestSecret;
+
+		const std::string fitSearchDisplay(const std::string& Info);
 	public:
 		Contact();
 		~Contact();
 
 		void SetContactField(const std::string& ContactInfo, int flag);
-		void DisplaySearch(int index);
+		void DisplaySearch(const int index);
 		void DisplayInfo();
+
 };
 
 #endif

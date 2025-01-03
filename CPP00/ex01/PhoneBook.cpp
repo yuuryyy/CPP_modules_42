@@ -7,7 +7,7 @@ PhoneBook::PhoneBook(){}
 
 PhoneBook::~PhoneBook(){}
 
-bool    PhoneBook::_promptNset(Contact& contact,const std::string msg,int flag)
+bool    PhoneBook::_promptNset(Contact& contact,const std::string& msg,int flag)
 {
     std::string GetInfo;
 
@@ -37,7 +37,7 @@ bool    PhoneBook::_promptNset(Contact& contact,const std::string msg,int flag)
     return true;
 }
 
-bool    PhoneBook::Add(int index)
+bool    PhoneBook::Add(const int index)
 {
 
     if (!this->_promptNset(this->_contacts[index], "\n=> Enter the First name : ", FNAME))

@@ -35,26 +35,26 @@ void	Contact::SetContactField(const std::string& ContactInfo, int flag)
 		this->_DarkestSecret = ContactInfo;
 }
 
-std::string	TruncateString(const std::string& str)
+const std::string	Contact::fitSearchDisplay(const std::string& Info)
 {
-	if (str.length() > 10)
-		return (str.substr(0, 9) + ".|");
+	if (Info.length() > 10)
+		return (Info.substr(0, 9) + ".|");
 	else
 	{
-		int			space_num = (10 - str.length());
+		int			space_num = (10 -Info.length());
 		std::string	Spaces(space_num / 2, ' ');
 		if (space_num % 2 == 0)
-			return (Spaces + str + Spaces + "|");
+			return (Spaces +Info + Spaces + "|");
 		else
-			return (Spaces + str + Spaces + " |");
+			return (Spaces +Info + Spaces + " |");
 	}
-	return (str);
+	return (Info);
 }
 
-void	Contact::DisplaySearch(int index)
+void	Contact::DisplaySearch(const int index)
 {
-	std::cout << "      |    " << index << "     |" << TruncateString(this->_FirstName)
-	<< TruncateString(this->_LastName) << TruncateString(this->_Nickname) << std::endl;
+	std::cout << "      |    " << index << "     |" << fitSearchDisplay(this->_FirstName)
+	<< fitSearchDisplay(this->_LastName) << fitSearchDisplay(this->_Nickname) << std::endl;
 }
 
 void	Contact::DisplayInfo()
