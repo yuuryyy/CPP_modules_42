@@ -19,12 +19,12 @@ bool    PhoneBook::_promptNset(Contact& contact,const std::string& msg,int flag)
         if (std::cin.eof() || std::cin.fail())
             return (false);
 
-       if (flag == NUM && !this->_inputParser(GetInfo, true))
+       if (flag == NUM && !_inputParser(GetInfo, true))
         {
         	std::cerr << RED"\n*Phone number should only contain digits!!*" RESET << std::endl;
 			continue ;
 		}
-        else if (!this->_inputParser(GetInfo, false))
+        else if (!_inputParser(GetInfo, false))
         {
         	std::cerr << RED"\n* Invalid information!!*" RESET << std::endl;
 			continue ;
@@ -40,15 +40,15 @@ bool    PhoneBook::_promptNset(Contact& contact,const std::string& msg,int flag)
 bool    PhoneBook::Add(const int index)
 {
 
-    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the First name : ", FNAME))
+    if (!_promptNset(_contacts[index], "\n=> Enter the First name : ", FNAME))
 		return false;
-    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the Last name : ", LNAME))
+    if (!_promptNset(_contacts[index], "\n=> Enter the Last name : ", LNAME))
 		return false;
-    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the _Nickname : ", NNAME))
+    if (!_promptNset(_contacts[index], "\n=> Enter the _Nickname : ", NNAME))
 		return false;
-    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the Phone number : ", NUM))
+    if (!_promptNset(_contacts[index], "\n=> Enter the Phone number : ", NUM))
 		return false;
-    if (!this->_promptNset(this->_contacts[index], "\n=> Enter the Darkest secret : ", SECRET))
+    if (!_promptNset(_contacts[index], "\n=> Enter the Darkest secret : ", SECRET))
 		return false;
 	_ContactsNb++;
 	return true;
@@ -93,7 +93,7 @@ bool	PhoneBook::Search()
 		_ContactsNb = 8;
 
 	for(int i = 0; i < _ContactsNb; i++)
-		this->_contacts[i].DisplaySearch(i);
+		_contacts[i].DisplaySearch(i);
 
 	int GetIndex;
 
@@ -116,7 +116,7 @@ bool	PhoneBook::Search()
 			std::cerr << RED"\n*The index " << GetIndex	<< " is out of range/wrong*" RESET << std::endl;
 		else
 		{
-			this->_contacts[GetIndex].DisplayInfo();
+			_contacts[GetIndex].DisplayInfo();
 			break ;
 		}
 	}
