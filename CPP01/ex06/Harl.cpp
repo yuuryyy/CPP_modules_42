@@ -12,6 +12,7 @@ Harl::~Harl( void )
 
 void	Harl::debug( void )
 {
+	std::cout << "[ DEBUG ]" << std::endl;
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger." << std::endl;
 	std::cout << "I really do!";
 	std::cout << std::endl;
@@ -19,6 +20,7 @@ void	Harl::debug( void )
 
 void	Harl::info( void )
 {
+	std::cout << "[ INFO ]" << std::endl;
 	std::cout << "I cannot believe adding extra bacon costs more money." << std::endl;
 	std::cout << " You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!";
 	std::cout << std::endl;
@@ -26,6 +28,7 @@ void	Harl::info( void )
 
 void	Harl::warning( void )
 {
+	std::cout << "[ WARNING ]" << std::endl;
 	std::cout << "I think I deserve to have some extra bacon for free." << std::endl;
 	std::cout << "I\'ve been coming for years whereas you started working here since last month.";
 	std::cout << std::endl;
@@ -33,6 +36,7 @@ void	Harl::warning( void )
 
 void	Harl::error( void )
 {
+	std::cout << "[ ERROR ]" << std::endl;
 	std::cout << "This is unacceptable! I want to speak to the manager now.";
 	std::cout << std::endl;
 }
@@ -43,25 +47,34 @@ void	Harl::complain( std::string level )
 	std::string		levels[] = {"DEBUG", "INFO","WARNING", "ERROR"};
 	int				i = 0;
 
-	while (levels[i].compare(level) != 0)
+	while (levels[i].compare(level) != 0 && i < 4)
 		i++;
-	switch(i)
+	if (i == 4)
 	{
-		case 0:
-			funptr = &Harl::debug;
-			break ;
-		case 1:
-			funptr = &Harl::info;
-			break;
-		case 2:
-			funptr = &Harl::warning;
-			break;
-		case 3:
-			funptr = &Harl::error;
-			break ;
-		default:
-			std::cerr << "UNKOWN LEVEL !." << std::endl;
-			return ;
+		std::cerr << "[ Probably complaining about insignificant problems ]" << std::endl;
+		return ;
 	}
-	(this->*funptr)();
+	for(int j = 0; j <= i; j++)
+	{
+		switch(j)
+		{
+			case 0:
+				funptr = &Harl::debug;
+				break ;
+			case 1:
+				funptr = &Harl::info;
+				break;
+			case 2:
+				funptr = &Harl::warning;
+				break;
+			case 3:
+				funptr = &Harl::error;
+				break ;
+			default:
+				std::cerr << "UNKOWN LEVEL !." << std::endl;
+		}
+		(this->*funptr)();
+		std::cout << std::endl;
+	}
 }
+

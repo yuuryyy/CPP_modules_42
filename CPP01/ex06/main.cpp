@@ -48,32 +48,11 @@ void	dbgLvl( Harl obj )
 int	main(int ac, char **av)
 {
 	Harl		obj;
-	std::string	lvl[] = {"DEBUG", "INFO","WARNING", "ERROR"};
-	int			i = 0;
 
 	if (ac != 2)
 		error("Invalid arguments => ", "./harlFilter LEVEL");
 
-	while (lvl[i].compare(av[1]) != 0)
-		i++;
-
-	switch(i)
-	{
-		case 0:
-			dbgLvl(obj);
-			break ;
-		case 1:
-			infLvl(obj);
-			break;
-		case 2:
-			wrnLvl(obj);
-			break;
-		case 3:
-			errLvl(obj);
-			break ;
-		default:
-			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-	}
+	obj.complain(std::string(av[1]));
 
 	return EXIT_SUCCESS;
 }
