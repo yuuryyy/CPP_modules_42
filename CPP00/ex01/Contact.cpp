@@ -35,26 +35,23 @@ void	Contact::SetContactField(const std::string& ContactInfo, int flag)
 		_DarkestSecret = ContactInfo;
 }
 
-const std::string	Contact::fitSearchDisplay(const std::string& Info)
+const std::string	Contact::_FitColumns(const std::string& Info)
 {
 	if (Info.length() > 10)
 		return (Info.substr(0, 9) + ".|");
 	else
 	{
-		int			space_num = (10 -Info.length());
-		std::string	Spaces(space_num / 2, ' ');
-		if (space_num % 2 == 0)
-			return (Spaces +Info + Spaces + "|");
-		else
-			return (Spaces +Info + Spaces + " |");
+		int			space_num = (10 - Info.length());
+		std::string	Spaces(space_num, ' ');
+			return (Spaces +Info + "|");
 	}
 	return (Info);
 }
 
 void	Contact::DisplaySearch(const int index)
 {
-	std::cout << "      |    " << index << "     |" << fitSearchDisplay(_FirstName)
-	<< fitSearchDisplay(_LastName) << fitSearchDisplay(_Nickname) << std::endl;
+	std::cout << "      |    " << index << "     |" << _FitColumns(_FirstName)
+	<< _FitColumns(_LastName) << _FitColumns(_Nickname) << std::endl;
 }
 
 void	Contact::DisplayInfo()

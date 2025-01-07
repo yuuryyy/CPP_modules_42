@@ -1,0 +1,68 @@
+Pointers to Member Functions
+In C++, a pointer to a member function (PMMF) is a special type of pointer that points to a non-static member function of a class. Unlike regular function pointers, PMMFs require an object of the class as an implicit argument, known as this. This object is used to disambiguate the member function call.
+
+Declaring a Pointer to a Member Function
+To declare a PMMF, use the following syntax:
+
+	return_type (Classname::*member_function_pointer)(argument_types)
+
+Replace:
+
+	return_type: the return type of the member function
+	Classname: the name of the class containing the member function
+	member_function_pointer: the name of the PMMF
+	argument_types: the types of the function’s arguments
+
+Example:
+
+	int (MyClass::*pmmf)(int, int);
+
+This declares a PMMF pmmf that points to a member function of MyClass taking two int arguments and returning an int.
+
+Initializing a Pointer to a Member Function
+To initialize a PMMF, use the address-of operator & and the class name:
+
+pmmf = &MyClass::member_function;
+
+Replace member_function with the name of the member function you want to point to.
+
+Calling a Member Function through a Pointer
+To call a member function through a PMMF, use the object pointer and the ->* operator:
+
+MyClass obj;
+	(int (MyClass::*pmmf)(int, int)) obj_pmf = &MyClass::member_function;
+	int result = (obj.*pmmf)(2, 3); // calls obj.member_function(2, 3)
+
+Here, obj is an object of type MyClass, and pmmf is the PMMF pointing to the member_function. The (obj.*pmmf)(2, 3) expression calls the member function on obj with arguments 2 and 3.
+
+Key Takeaways
+	A PMMF requires an object of the class as an implicit argument (this).
+	The PMMF declaration includes the class name and the function’s return and argument types.
+	Initialize a PMMF using the address-of operator & and the class name.
+	Call a member function through a PMMF using the object pointer and the ->* operator.
+Example Code
+Here’s a complete example demonstrating the use of a PMMF:
+
+	#include <iostream>
+	
+	class MyClass {
+	public:
+	    int add(int a, int b) { return a + b; }
+	    int subtract(int a, int b) { return a - b; }
+	};
+	
+	int main() {
+	    MyClass obj;
+	    int (MyClass::*pmmf)(int, int) = &MyClass::add;
+	
+	    int result = (obj.*pmmf)(2, 3); // calls obj.add(2, 3)
+	    std::cout << "Result: " << result << std::endl;
+	
+	    pmmf = &MyClass::subtract;
+	    result = (obj.*pmmf)(4, 2); // calls obj.subtract(4, 2)
+	    std::cout << "Result: " << result << std::endl;
+	
+	    return 0;
+	}
+
+This example demonstrates the declaration, initialization, and usage of a PMMF to call member functions of MyClass.

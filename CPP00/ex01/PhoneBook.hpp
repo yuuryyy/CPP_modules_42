@@ -19,6 +19,7 @@ class PhoneBook
 		bool Search();
 		int Exit();
 		void Other();
+		void clear();
 };
 
 

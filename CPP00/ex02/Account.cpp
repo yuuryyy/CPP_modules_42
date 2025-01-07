@@ -62,7 +62,7 @@ Account::Account(int initial_deposit)
 void	Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
-	std::cout << " account:" << getNbAccounts() << ";total:" << getTotalAmount()
+	std::cout << " accounts:" << getNbAccounts() << ";total:" << getTotalAmount()
 		<< ";deposits:" << getNbDeposits() << ";withdrawals:" << getNbWithdrawals() << std::endl;
 }
 

@@ -30,7 +30,7 @@ class Contact
 		std::string	_PhoneNumber;
 		std::string	_DarkestSecret;
 
-		const std::string fitSearchDisplay(const std::string& Info);
+		const std::string _FitColumns(const std::string& Info);
 	public:
 		Contact();
 		~Contact();

@@ -10,8 +10,8 @@ int main(int ac, char **av)
 		std::string	string;
 		for (int i = 1; av[i]; i++)
 		{
-			string = av[i];
-			for (int k = 0; k < string.length(); k++)
+			string = std::string(av[i]);
+			for (size_t k = 0; k < string.length(); k++)
 			{
 				string[k] = toupper(string[k]);
 				std::cout << string[k];

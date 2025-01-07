@@ -1,12 +1,19 @@
 
 #include "PhoneBook.hpp"
 
+// TODO ` right-aligned.
+
 int	main(int ac, char **av)
 {
 	std::string	buffer;
 	PhoneBook	phonebook;
 	int			index;
 	(void)av;
+
+	std::cout << YELLOW"               Welcome to the PhoneBook application." << std::endl;
+	std::cout << "          You can ADD, SEARCH or EXIT the application." << RESET << std::endl;
+	std	::cout << "**************************************************************************." << std::endl;
+
 
 	if (ac != 1)
 	{
@@ -27,7 +34,7 @@ int	main(int ac, char **av)
 				return phonebook.Exit();
 		}
 
-		else if (buffer == "SEARCH")
+		else if (!buffer.compare("SEARCH"))
 		{
 			if (phonebook.Search() == false)
 				return phonebook.Exit();
@@ -40,7 +47,8 @@ int	main(int ac, char **av)
 			phonebook.Other();
 
 		if (index == 7)
-			index = 0;
+			index = -1;
+
 	}
 	return (0);
 }

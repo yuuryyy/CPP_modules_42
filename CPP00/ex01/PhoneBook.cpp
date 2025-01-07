@@ -7,6 +7,14 @@ PhoneBook::PhoneBook(){}
 
 PhoneBook::~PhoneBook(){}
 
+
+void	PhoneBook::clear()
+{
+	std::cin.clear();
+	std::cin.ignore(1000, '\n');
+}
+
+
 bool    PhoneBook::_promptNset(Contact& contact,const std::string& msg,int flag)
 {
     std::string GetInfo;
@@ -18,6 +26,7 @@ bool    PhoneBook::_promptNset(Contact& contact,const std::string& msg,int flag)
 
         if (std::cin.eof() || std::cin.fail())
             return (false);
+		clear();
 
        if (flag == NUM && !_inputParser(GetInfo, true))
         {
@@ -31,7 +40,6 @@ bool    PhoneBook::_promptNset(Contact& contact,const std::string& msg,int flag)
         }
         contact.SetContactField(GetInfo, flag);
         return true;
-
     }
 
     return true;
@@ -39,6 +47,8 @@ bool    PhoneBook::_promptNset(Contact& contact,const std::string& msg,int flag)
 
 bool    PhoneBook::Add(const int index)
 {
+
+	_ContactsNb++;
 
     if (!_promptNset(_contacts[index], "\n=> Enter the First name : ", FNAME))
 		return false;
@@ -50,7 +60,6 @@ bool    PhoneBook::Add(const int index)
 		return false;
     if (!_promptNset(_contacts[index], "\n=> Enter the Darkest secret : ", SECRET))
 		return false;
-	_ContactsNb++;
 	return true;
 }
 
@@ -107,12 +116,13 @@ bool	PhoneBook::Search()
 
 		if (std::cin.fail())
 		{
-				std::cin.clear();
-				std::cin.ignore(1000, '\n');
+				clear();
+				std::cerr << RED"\n*Invalid input!!*" RESET << std::endl;
 				continue;
 		}
+		clear();
 
-		if (GetIndex > _ContactsNb - 1)
+		if (GetIndex > _ContactsNb - 1 || GetIndex < 0)
 			std::cerr << RED"\n*The index " << GetIndex	<< " is out of range/wrong*" RESET << std::endl;
 		else
 		{
@@ -131,5 +141,6 @@ int	PhoneBook::Exit()
 
 void	PhoneBook::Other()
 {
+	clear();
 	std::cerr << RED"\nInvalid option !!\n" RESET << std::endl;
 }

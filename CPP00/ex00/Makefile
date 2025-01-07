@@ -1,19 +1,21 @@
 NAME 		:=	megaphone
 
-SRC			:=	megaphone.cpp
+SRC			:=	megaphone.cpp \
 
-OBG			:= megaphone.o
 
 COMPILER	:= c++
 
 FLAGS		:= -Wall -Wextra -Werror  -std=c++98
+
+OBG			:= $(SRC:.cpp=.o)
+
 
 all	:  $(NAME)
 
  $(NAME) : $(OBG)
 	$(COMPILER) $(FLAGS) $(OBG) -o $(NAME)
 
-$(OBG) : $(SRC)
+%.o: %.cpp 
 	$(COMPILER) $(FLAGS) -c $< -o $@
 
 clean :
