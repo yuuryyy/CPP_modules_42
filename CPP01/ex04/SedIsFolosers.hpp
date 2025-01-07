@@ -13,7 +13,8 @@
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 
-void	CopynReplace(std::ifstream& infile, std::ofstream& outfile,const std::string s1,const std::string s2);
+bool	CopynReplace(std::ifstream& infile, std::ofstream& outfile,const std::string& s1,const std::string& s2);
+void	error(const std::string& errname,const std::string& spec);
 
 
 #endif

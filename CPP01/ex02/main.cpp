@@ -4,8 +4,8 @@ int main()
 {
 
 	std::string	StrTest("HI THIS IS BRAIN");
-	std::string* stringPTR = &StrTest;
-	std::string& stringREF = StrTest;
+	std::string* stringPTR(&StrTest);
+	std::string& stringREF(StrTest);
 
 	{
 		std::cout << "The memory address of the string variable :[";
@@ -25,10 +25,10 @@ int main()
 
 		std::cout << "The value of the string variable          :{ ";
 		std::cout << StrTest + " }." << std::endl;
-	
+
 		std::cout << "The value pointed to by stringPTR         :{ ";
 		std::cout << *stringPTR + " }." << std::endl;
-	
+
 		std::cout << "The value of the string variable          :{ ";
 		std::cout << stringREF << " }." << std::endl;
 	}

@@ -11,11 +11,11 @@ class HumanB
 		std::string	 _name;
 
 	public:
-		HumanB( const std::string &name);
+		HumanB( const std::string& name);
 		~HumanB( void );
 
 		void	attack( void );
-		void	setWeapon(Weapon &weapon);
+		void	setWeapon(Weapon& weapon);
 
 };
 

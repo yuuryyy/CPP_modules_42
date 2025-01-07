@@ -12,7 +12,7 @@ Harl::~Harl( void )
 
 void	Harl::debug( void )
 {
-	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. ";
+	std::cout << " love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burge ";
 	std::cout << "I really do!";
 	std::cout << std::endl;
 }
@@ -43,7 +43,7 @@ void	Harl::complain( std::string level )
 	std::string		levels[] = {"DEBUG", "INFO","WARNING", "ERROR"};
 	int				i = 0;
 
-	while (levels[i].compare(level) != 0)
+	while (levels[i].compare(level) != 0 && i < 4)
 		i++;
 	switch(i)
 	{

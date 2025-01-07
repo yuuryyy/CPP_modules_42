@@ -1,8 +1,8 @@
 #include "SedIsFolosers.hpp"
 
-void	Replace(std::string& buff, int index,const std::string s1, const std::string s2)
+void	Replace(std::string& buff, int index,const std::string& s1, const std::string& s2)
 {
-	std::string	beforeS1 = "";
+	std::string	beforeS1;
 	std::string	occurence;
 	std::string	afterS1;
 
@@ -13,7 +13,7 @@ void	Replace(std::string& buff, int index,const std::string s1, const std::strin
 	buff = beforeS1 + occurence + afterS1;
 }
 
-void	CopynReplace(std::ifstream& infile, std::ofstream& outfile,const std::string s1,const std::string s2)
+bool	CopynReplace(std::ifstream& infile, std::ofstream& outfile,const std::string& s1,const std::string& s2)
 {
 	std::string	buff;
 	size_t		index;
@@ -22,6 +22,8 @@ void	CopynReplace(std::ifstream& infile, std::ofstream& outfile,const std::strin
 	while (std::getline(infile, buff))
 	{
 		isEOF = infile.eof();
+		if (infile.bad())
+           return (error("Error while reading file", ""), infile.close(), outfile.close(), false);
 		index = buff.find(s1);
 		while (index != std::string::npos)
 		{
@@ -32,4 +34,5 @@ void	CopynReplace(std::ifstream& infile, std::ofstream& outfile,const std::strin
 		if (!isEOF)
 			outfile << std::endl;
 	}
+	return (true);
 }
