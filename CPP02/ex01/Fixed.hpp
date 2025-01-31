@@ -7,7 +7,7 @@
 class Fixed
 {
     private:
-       int              _value;
+       int            _value;
        static const int fractionalBITS;
        
     public:
@@ -28,5 +28,6 @@ class Fixed
 
 };
 
+std::ostream &operator<<(std::ostream &__out, const Fixed &obj);
 
 #endif
