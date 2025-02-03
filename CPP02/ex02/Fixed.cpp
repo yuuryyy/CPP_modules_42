@@ -125,3 +125,42 @@ Fixed   Fixed::operator/( const Fixed &other )
     Fixed Result(this->toFloat() / other.toFloat());
     return Result;
 }
+
+Fixed   &Fixed::operator++( void )
+{
+    _value += 1;
+    return *this;
+}
+Fixed   Fixed::operator++( int )
+{
+    Fixed   temp = *this;
+
+    this->_value += 1;
+    return temp;
+}
+Fixed   &Fixed::operator--( void )
+{
+    _value -= 1;
+    return *this;
+}
+Fixed   Fixed::operator--( int )
+{
+    Fixed   temp = *this;
+
+    this->_value -= 1;
+    return temp;
+}
+
+Fixed   &Fixed::min(Fixed &Obj1, Fixed &Obj2)
+{
+    if (Obj1 < Obj2)
+        return Obj1;
+    return Obj2;
+}
+
+Fixed   &Fixed::min(const Fixed &Obj1, const Fixed &Obj2)
+{
+    if ((Fixed)Obj1 < Obj2)
+        return (Fixed)Obj1;
+    return(Fixed) Obj2;
+}

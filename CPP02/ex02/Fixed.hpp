@@ -12,6 +12,12 @@ class Fixed
        
     public:
 
+        static Fixed& min( Fixed &Obj1, Fixed &Obj2);
+        static Fixed& min( const Fixed &Obj1, const Fixed &Obj2);
+
+        static Fixed& max( Fixed &Obj1, Fixed &Obj2);
+        static Fixed& max( const Fixed &Obj1, const Fixed &Obj2);
+
         Fixed( void );
         Fixed( const Fixed &Obj );
         Fixed &operator=( const Fixed &Obj );
@@ -28,6 +34,11 @@ class Fixed
         Fixed operator-( const Fixed &other );
         Fixed operator*( const Fixed &other );
         Fixed operator/( const Fixed &other );
+
+        Fixed &operator++( void );
+        Fixed operator++( int );
+        Fixed &operator--( void );
+        Fixed operator--( int );
 
         Fixed( const int Number );
         Fixed( const float Number );
