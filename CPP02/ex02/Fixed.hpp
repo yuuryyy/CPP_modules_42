@@ -12,36 +12,36 @@ class Fixed
        
     public:
 
+        static const Fixed& min( const Fixed &Obj1, const Fixed &Obj2);
         static Fixed& min( Fixed &Obj1, Fixed &Obj2);
-        static Fixed& min( const Fixed &Obj1, const Fixed &Obj2);
 
+        static const Fixed& max( const Fixed &Obj1, const Fixed &Obj2);
         static Fixed& max( Fixed &Obj1, Fixed &Obj2);
-        static Fixed& max( const Fixed &Obj1, const Fixed &Obj2);
 
-        Fixed( void );
-        Fixed( const Fixed &Obj );
         Fixed &operator=( const Fixed &Obj );
+        Fixed( const float Number );
+        Fixed( const Fixed &Obj );
+        Fixed( const int Number );
         ~Fixed( void );
+        Fixed( void );
 
-        bool operator>( const Fixed &other) ;
-        bool operator<( const Fixed &other );
-        bool operator>=( const Fixed &other );
-        bool operator<=( const Fixed &other );
-        bool operator==( const Fixed &other );
-        bool operator!=( const Fixed &other );
+        bool operator>( const Fixed &other) const ;
+        bool operator<( const Fixed &other ) const;
+        bool operator>=( const Fixed &other ) const;
+        bool operator<=( const Fixed &other ) const;
+        bool operator==( const Fixed &other ) const;
+        bool operator!=( const Fixed &other ) const;
 
-        Fixed operator+( const Fixed &other );
-        Fixed operator-( const Fixed &other );
-        Fixed operator*( const Fixed &other );
-        Fixed operator/( const Fixed &other );
+        Fixed operator+( const Fixed &other ) const;
+        Fixed operator-( const Fixed &other ) const;
+        Fixed operator*( const Fixed &other ) const;
+        Fixed operator/( const Fixed &other ) const;
 
         Fixed &operator++( void );
         Fixed operator++( int );
         Fixed &operator--( void );
         Fixed operator--( int );
 
-        Fixed( const int Number );
-        Fixed( const float Number );
 
         int getRawBits( void ) const;
         void setRawBits( int const raw );
