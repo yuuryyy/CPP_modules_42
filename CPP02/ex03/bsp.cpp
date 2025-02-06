@@ -1,6 +1,5 @@
 #include "Point.hpp"
 
-
 static Fixed Abs( Fixed Fpoint)
 {
     if (Fpoint < 0)
@@ -15,7 +14,6 @@ static Fixed area( Point const &a, Point const &b, Point const &c )
                c.get_X() * (a.get_Y() - b.get_Y())) / 2;
 }
 
-
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
     Fixed   totalAREA = area(a, b, c);
@@ -23,7 +21,6 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
     Fixed   area2     = area(a, point, c);
     Fixed   area3     = area(point, b, c);
 
-    // if (point == a || point == b)
     return (area1 > 0 && area2 > 0 && area3 > 0
             && ((area1 + area2 + area3) == totalAREA));
 }
