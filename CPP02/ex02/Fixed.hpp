@@ -18,27 +18,32 @@ class Fixed
         static const Fixed& max( const Fixed &Obj1, const Fixed &Obj2);
         static Fixed& max( Fixed &Obj1, Fixed &Obj2);
 
-        Fixed &operator=( const Fixed &Obj );
         Fixed( const float Number );
         Fixed( const Fixed &Obj );
         Fixed( const int Number );
         ~Fixed( void );
         Fixed( void );
 
+        Fixed &operator=( const Fixed &Obj );
+        
         bool operator>( const Fixed &other) const ;
         bool operator<( const Fixed &other ) const;
+        
         bool operator>=( const Fixed &other ) const;
         bool operator<=( const Fixed &other ) const;
+        
         bool operator==( const Fixed &other ) const;
         bool operator!=( const Fixed &other ) const;
 
         Fixed operator+( const Fixed &other ) const;
         Fixed operator-( const Fixed &other ) const;
+        
         Fixed operator*( const Fixed &other ) const;
         Fixed operator/( const Fixed &other ) const;
 
         Fixed &operator++( void );
         Fixed operator++( int );
+        
         Fixed &operator--( void );
         Fixed operator--( int );
 

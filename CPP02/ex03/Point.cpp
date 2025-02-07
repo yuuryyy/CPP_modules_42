@@ -13,7 +13,6 @@ Point  Point::operator=( const Point& Other)
         *((Fixed *)(&x)) = Other.get_X();
         *((Fixed *)(&y)) = Other.get_Y();
     }
-
     return *this;
 }
 

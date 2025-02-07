@@ -32,7 +32,6 @@ Fixed::Fixed( const float Number)
 
     result = Number * (1 << fractionalBITS);
     _value = roundf(result);
-
 }
 
 Fixed::~Fixed( void )
@@ -42,13 +41,11 @@ Fixed::~Fixed( void )
 
 int Fixed::getRawBits( void ) const
 {
-    
     return _value; 
 }
 
 void Fixed::setRawBits( int const raw )
 {
-    
     _value = raw;
 }
 

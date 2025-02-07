@@ -10,7 +10,7 @@ Fixed::Fixed( void ) : _value(0)
 Fixed::Fixed( const Fixed &Obj)
 {
     std::cout << "Copy constructor called" << std::endl;
-    _value = Obj.getRawBits();
+    *this = Obj;
 }
 
 
