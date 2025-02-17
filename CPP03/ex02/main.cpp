@@ -1,21 +1,37 @@
 #include "FragTrap.hpp"
-#include "ScavTrap.hpp"
 
 int main( void )
 {
-    FragTrap fragTrap("FragTrap");
-    FragTrap fragTrap2(fragTrap);
-    FragTrap fragTrap3 = fragTrap;
+    std::string separator(70, '*');
 
-    fragTrap.attack("target");
-    fragTrap.takeDamage(10);
-    fragTrap.beRepaired(5);
-    fragTrap.highFiveGuys();
+    FragTrap frag1("FR4G-TP");
+    FragTrap frag2(frag1);
+    FragTrap frag3;
 
-    fragTrap2.attack("target");
-    fragTrap2.takeDamage(10);
+    frag3 = frag1;
 
-    fragTrap3.attack("target");
-    fragTrap3.takeDamage(10);
+    std::cout << separator << "\n" << std::endl;
+    frag1.highFiveGuys();
+    std::cout << separator << "\n" << std::endl;
+
+    for (int i = 0; i < 99; i++)
+    {
+        frag1.attack("MOXIII");
+    }
+    
+    std::cout << separator << "\n" <<  std::endl;
+    frag1.beRepaired(10);
+    std::cout << separator << "\n" <<  std::endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        frag1.takeDamage(50);
+    }
+
+    std::cout << separator << "\n" << std::endl;
+    frag1.highFiveGuys();
+    std::cout << separator << "\n" << std::endl;
+
+
     return 0;
 }

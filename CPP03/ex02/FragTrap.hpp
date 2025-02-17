@@ -11,10 +11,12 @@ class FragTrap : public ClapTrap
         FragTrap( void );
         FragTrap ( const FragTrap& Other );
         FragTrap ( const std::string& Name );
-        FragTrap &operator =( const FragTrap &Other);
-        ~FragTrap ( void );
+
+        FragTrap &operator=( const FragTrap &Other);
 
         void highFiveGuys( void );
+        
+        ~FragTrap ( void );
 };
 
 
