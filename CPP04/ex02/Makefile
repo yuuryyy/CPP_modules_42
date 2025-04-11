@@ -1,6 +1,6 @@
-NAME 	:=  AbstractAnimal
+NAME 	:=  AAnimal
 
-SRCS 	:=  main.cpp AbstractAnimal.cpp\
+SRCS 	:=  main.cpp AAnimal.cpp\
 		    Dog.cpp Cat.cpp     \
 			WrongAnimal.cpp      \
 			WrongCat.cpp          \
@@ -10,7 +10,7 @@ OBJS 	:= $(SRCS:.cpp=.o)
 
 CC 		:= c++
 
-HEADER 	:= AbstractAnimal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+HEADER 	:= AAnimal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
 
 CFLAGS 	:= -Wall -Wextra -Werror -std=c++98
 

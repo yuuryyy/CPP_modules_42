@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog( void ) : AbstractAnimal("Dog")
+Dog::Dog( void ) : AAnimal("Dog")
 {
     std::cout << "Dog default constructor called." << std::endl;
     this->_brain = new Brain();
@@ -8,7 +8,7 @@ Dog::Dog( void ) : AbstractAnimal("Dog")
         this->_brain->setIdea(i, "this person is so kind to me , is he a god.");
 }
 
-Dog::Dog( const Dog &dog ) : AbstractAnimal("Dog")
+Dog::Dog( const Dog &dog ) : AAnimal("Dog")
 {
     std::cout << "Dog copy constructor called." << std::endl;
     *this = dog;

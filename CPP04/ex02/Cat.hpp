@@ -3,10 +3,10 @@
 
 #include <iostream>
 
-#include "AbstractAnimal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Cat : public AbstractAnimal
+class Cat : public AAnimal
 {
     public:
 

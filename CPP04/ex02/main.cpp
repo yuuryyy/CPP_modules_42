@@ -1,4 +1,4 @@
-#include "AbstractAnimal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
@@ -8,8 +8,8 @@ int main()
 {
     std::string sep(50, '*');
     unsigned int size = 6;
-    const AbstractAnimal *animals[size];
-    // AbstractAnimal animal("Animal");//object of abstract class is not allowed
+    const AAnimal *animals[size];
+    // AAnimal animal("Animal");//object of A class is not allowed
 
     for (unsigned int i = 0; i < size; i++)
     {

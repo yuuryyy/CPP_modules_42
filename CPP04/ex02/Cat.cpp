@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat( void ) : AbstractAnimal("Cat")
+Cat::Cat( void ) : AAnimal("Cat")
 {
     std::cout << "Cat default constructor called." << std::endl;
     this->_brain = new Brain();
@@ -8,7 +8,7 @@ Cat::Cat( void ) : AbstractAnimal("Cat")
         this->_brain->setIdea(i, "this person is so kind to me , am I a god.");
 }
 
-Cat::Cat( const Cat &cat ) : AbstractAnimal("Cat")
+Cat::Cat( const Cat &cat ) : AAnimal("Cat")
 {
     std::cout << "Cat copy constructor called." << std::endl;
     *this = cat;
