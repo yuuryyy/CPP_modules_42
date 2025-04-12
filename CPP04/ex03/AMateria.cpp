@@ -1,5 +1,6 @@
 # include "AMateria.hpp"
 
+
 AMateria::AMateria( void ) : _type("default") {
     std::cout << "AMateria default constructor called" << std::endl;
 }
@@ -29,6 +30,12 @@ AMateria::~AMateria( void ) {
 const std::string&
 AMateria::getType( void ) const {
     return this->_type;
+}
+
+void
+AMateria::use( ICharacter& target ) {
+    std::cout << "AMateria use method called" << std::endl;
+    std::cout << this->getType() <<" Materia used by " << target.getName() << std::endl;
 }
 
 // TODO: implement the use method

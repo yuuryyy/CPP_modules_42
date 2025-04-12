@@ -1,15 +1,19 @@
 NAME 	:= Interface
 
-SRCS 	:=  main.cpp \
-		    AMateria.cpp\
-			Wrong.cpp      \
-			WrongCat.cpp          \
+
+SRCS	:=	Ice.cpp     \
+			Cure.cpp     \
+			main.cpp      \
+		    AMateria.cpp   \
+			Character.cpp   \
+			MateriaSource.cpp \
 
 OBJS 	:= $(SRCS:.cpp=.o)
 
 CC 		:= c++
 
-HEADER 	:= AMateria.hpp Dog.hpp Cat.hpp Wrong.hpp WrongCat.hpp
+HEADER 	:= AMateria.hpp Ice.hpp Character.hpp ICharacter.hpp Cure.hpp \
+			IMateriaSource.hpp MateriaSource.hpp \
 
 CFLAGS 	:= -Wall -Wextra -Werror -std=c++98
 

@@ -1,3 +1,4 @@
+#pragma once
 #ifndef ICE_HPP
 #define ICE_HPP
 
@@ -13,7 +14,7 @@ class Ice : public AMateria
         ~Ice( void );
 
         AMateria* clone( void ) const;
-        // virtual void use( ICharacter& target );
+        void use( ICharacter& target );
 };
 
 
