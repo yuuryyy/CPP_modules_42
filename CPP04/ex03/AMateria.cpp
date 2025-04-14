@@ -1,22 +1,22 @@
 # include "AMateria.hpp"
-
+#include "ICharacter.hpp"
 
 AMateria::AMateria( void ) : _type("default") {
-    std::cout << "AMateria default constructor called" << std::endl;
+    // std::cout << "AMateria default constructor called" << std::endl;
 }
 
 AMateria::AMateria( const AMateria &Other ) {
-    std::cout << "AMateria copy constructor called" << std::endl;
+    // std::cout << "AMateria copy constructor called" << std::endl;
     *this = Other;
 }
 
 AMateria::AMateria( const std::string &type ) : _type(type) {
-    std::cout << "AMateria " << type << " constructor called" << std::endl;
+    // std::cout << "AMateria " << type << " constructor called" << std::endl;
 }
 
 AMateria&
 AMateria::operator=( const AMateria &Other ) {
-    std::cout << "AMateria assignment operator called" << std::endl;
+    // std::cout << "AMateria assignment operator called" << std::endl;
     if (this != &Other) {
         this->_type = Other._type;
     }
@@ -24,7 +24,7 @@ AMateria::operator=( const AMateria &Other ) {
 }
 
 AMateria::~AMateria( void ) {
-    std::cout << "AMateria destructor called" << std::endl;
+    // std::cout << "AMateria destructor called" << std::endl;
 }
 
 const std::string&
@@ -34,7 +34,7 @@ AMateria::getType( void ) const {
 
 void
 AMateria::use( ICharacter& target ) {
-    std::cout << "AMateria use method called" << std::endl;
+    // std::cout << "AMateria use method called" << std::endl;
     std::cout << this->getType() <<" Materia used by " << target.getName() << std::endl;
 }
 
