@@ -35,6 +35,6 @@ Cure::clone( void ) const
 void
 Cure::use( ICharacter& target ) 
 {
-        std::cout << "Cure use method called" << std::endl; 
+    std::cout << "Cure use method called" << std::endl; 
     std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

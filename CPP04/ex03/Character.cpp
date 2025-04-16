@@ -20,9 +20,9 @@ Character::Character( const Character& other ) : _name(other._name), _count(othe
     for (int i = 0; i < 4; i++)
     {
         if (other._inventory[i])
-            _inventory[i] = other._inventory[i]->clone();
+            this->_inventory[i] = other._inventory[i]->clone();
         else
-            _inventory[i] = NULL;
+            this->_inventory[i] = NULL;
     }
 }
 
@@ -32,16 +32,16 @@ Character::operator=( const Character& other )
     std::cout << "Character assignment operator called" << std::endl;
     if (this != &other)
     {
-        _name = other._name;
-        _count = other._count;
+        this->_name = other._name;
+        this->_count = other._count;
         for (int i = 0; i < 4; i++)
         {
-            if (_inventory[i])
-                delete _inventory[i];
+            if (this->_inventory[i])
+                delete this->_inventory[i];
             if (other._inventory[i])
-                _inventory[i] = other._inventory[i]->clone();
+                this->_inventory[i] = other._inventory[i]->clone();
             else
-                _inventory[i] = NULL;
+                this->_inventory[i] = NULL;
         }
     }
     return *this;
@@ -60,7 +60,7 @@ Character::~Character( void )
 const std::string&
 Character::getName( void ) const
 {
-    std::cout << "Character getName method called" << std::endl;
+    // std::cout << "Character getName method called" << std::endl;
     return _name;
 }
 
