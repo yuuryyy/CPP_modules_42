@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 
+
 int main( void )
 {
     try
@@ -21,5 +22,8 @@ int main( void )
     {
         std::cout << e.what() << std::endl;
     }
+
+    std::cout << "end of program" << std::endl;
+    
     return 0;
 }

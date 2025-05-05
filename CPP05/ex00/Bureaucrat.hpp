@@ -24,6 +24,8 @@ class Bureaucrat
         void increment( void );
         void decrement( void );
 
+        
+        
         class GradeTooHighException : public std::exception
         {
             public:
@@ -38,6 +40,6 @@ class Bureaucrat
 
 };
 
-std::ostream &operator<<(std::ostream &o, Bureaucrat const &i)
+std::ostream &operator<<(std::ostream &o, Bureaucrat const &i);
 
 #endif
