@@ -1,8 +1,11 @@
 NAME	:= Bureaucrat
 
-SRCS	:= Bureaucrat.cpp \
-			main.cpp       \
-			Form.cpp       \
+SRCS	:= Bureaucrat.cpp 			\
+			main.cpp       			 \
+			AForm.cpp       		  \
+			PresidentialPardonForm.cpp \
+			RobotomyRequestForm.cpp     \
+			ShrubberyCreationForm.cpp    \
 
 OBJS	:= $(SRCS:.cpp=.o)
 
@@ -10,8 +13,11 @@ CXX		:= c++
 
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-HEADERS	:= Bureaucrat.hpp \
-			Form.hpp      \
+HEADERS	:= Bureaucrat.hpp 			 \
+			AForm.hpp      			  \
+			PresidentialPardonForm.hpp \
+			RobotomyRequestForm.hpp     \
+			ShrubberyCreationForm.hpp    \
 
 RM		:= rm -f
 

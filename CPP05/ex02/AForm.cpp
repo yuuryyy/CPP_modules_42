@@ -61,12 +61,17 @@ void AForm::beSigned( Bureaucrat &bureaucrat )
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-    return "AForm: Grade too high";
+    return "Grade too high";
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-    return "AForm: Grade too low";
+    return "Grade too low";
+}
+
+const char* AForm::FormNotSignedException::what() const throw()
+{
+    return "Form is not signed";
 }
 
 std::ostream &operator<<(std::ostream &o, AForm const &i)
@@ -78,7 +83,7 @@ std::ostream &operator<<(std::ostream &o, AForm const &i)
 void AForm::execute( Bureaucrat const & executor ) const
 {
     if (!this->_isSigned)
-        throw AForm::GradeTooLowException();
+        throw AForm::FormNotSignedException();
     if (executor.getGrade() > this->_gradeToExecute)
         throw AForm::GradeTooLowException();
     this->action();

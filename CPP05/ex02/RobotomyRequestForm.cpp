@@ -27,7 +27,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=( const RobotomyRequestForm &
 
 void RobotomyRequestForm::action( void ) const
 {
-    std::cout << "Bzzzzzzzzzz....DRRRRRRR...." << std::endl;
+    std::cout << "DZZZZZZ....DRRRRRRR...." << std::endl;
     std::cout << "Robotomy on " << this->_target << " has been ";
 
     if (rand() % 2)
