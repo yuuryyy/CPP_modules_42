@@ -5,12 +5,14 @@
 
 int main( void )
 {
+    srand(time(0));
+    AForm        *ppf = new PresidentialPardonForm("PPF");
+    AForm        *scf = new ShrubberyCreationForm("SCF");
+    AForm        *rrf = new RobotomyRequestForm("RRF");
+
     try
     {
         Bureaucrat a("a", 1);
-        AForm        *ppf = new PresidentialPardonForm("PPF");
-        AForm        *scf = new ShrubberyCreationForm("SCF");
-        AForm        *rrf = new RobotomyRequestForm("RRF");
 
         Bureaucrat b("b", 150);
         a.signForm(*ppf);
@@ -23,12 +25,17 @@ int main( void )
         a.executeForm(*rrf);
 
         b.signForm(*rrf);
-    }
 
+    }
+    
     catch (std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
+    
+    delete ppf;
+    delete scf;
+    delete rrf;
 
     std::cout << "end of program" << std::endl;
     

@@ -30,7 +30,7 @@ void RobotomyRequestForm::action( void ) const
     std::cout << "DZZZZZZ....DRRRRRRR...." << std::endl;
     std::cout << "Robotomy on " << this->_target << " has been ";
 
-    if (rand() % 2)
+    if (rand() % 2 == 0)
         std::cout << "successful" << std::endl;
     else
         std::cout << "unsuccessful" << std::endl;

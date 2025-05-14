@@ -1,8 +1,9 @@
 NAME	:= Bureaucrat
 
-SRCS	:= Bureaucrat.cpp 			\
-			main.cpp       			 \
-			AForm.cpp       		  \
+SRCS	:= Bureaucrat.cpp 		   \
+			main.cpp       			\
+			AForm.cpp       		 \
+			Intern.cpp				  \
 			PresidentialPardonForm.cpp \
 			RobotomyRequestForm.cpp     \
 			ShrubberyCreationForm.cpp    \
@@ -13,8 +14,9 @@ CXX		:= c++
 
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-HEADERS	:= Bureaucrat.hpp 			 \
-			AForm.hpp      			  \
+HEADERS	:= Bureaucrat.hpp 			\
+			AForm.hpp      			 \
+			Intern.hpp				  \
 			PresidentialPardonForm.hpp \
 			RobotomyRequestForm.hpp     \
 			ShrubberyCreationForm.hpp    \

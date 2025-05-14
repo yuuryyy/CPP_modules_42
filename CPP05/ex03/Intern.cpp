@@ -27,8 +27,9 @@ Intern::makeForm( const std::string name, const std::string target )
                             "shrubbery creation"
                             };
 
-    while (forms[i].compare(target) != 0 && i < 3)
+    while (forms[i] != name && i < 3)
         i++;
+
     switch (i)
     {
         case PRESIDENTIALPARDONFORM:
@@ -44,16 +45,18 @@ Intern::makeForm( const std::string name, const std::string target )
             form = NULL;
             break;
     }
+
     if (!form)
         std::cout << "ERROR : WHAT IS " << name << " ?!";
     else
-        std::cout << "Intern creates " << name;
+        std::cout << "Intern creates " << name << " form";
+
     std::cout << std::endl;
+
     return form;
 }
 
 Intern::~Intern( void)
 {
-
 }
 
