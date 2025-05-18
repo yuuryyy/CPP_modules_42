@@ -6,6 +6,7 @@
 #include <limits>
 #include <string>
 #include <cmath>
+#include <sstream>
 
 
 class ScalarConverter
@@ -24,12 +25,12 @@ class ScalarConverter
         static bool    isFloat( const std::string& literalRep );
         static bool    isDouble( const std::string& literalRep );
 
-        static void     ConvertChar(char c);
-        static void     ConvertInt(int i);
-        static void     ConvertFloat(float f);
-        static void     ConvertDouble(double d);
+        static void     ConvertChar( const std::string& literalRep );
+        static void     ConvertInt( const std::string& literalRep );
+        static void     ConvertFloat( const std::string& literalRep );
+        static void     ConvertDouble( const std::string& literalRep );
 
-        static bool     pseudoHandler( const std::string& literalRep );
+        static void     pseudoHandler( const std::string& literalRep );
         
         static int     error( const std::string& literalRep );
 
