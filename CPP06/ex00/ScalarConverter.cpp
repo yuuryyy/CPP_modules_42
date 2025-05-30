@@ -16,17 +16,8 @@ ScalarConverter::operator=( const ScalarConverter& other )
     return *this;
 }
 
-bool
-ScalarConverter::isChar(const std::string& literalRep)
-{
- 
-    return (literalRep.length() == 3 && 
-            literalRep[0] == '\'' && 
-            literalRep[2] == '\'');
-}
-
-bool
-ScalarConverter::isInt( const std::string& literalRep )
+static bool
+isInt( const std::string& literalRep )
 {
     bool    sign = false;
 
@@ -39,105 +30,48 @@ ScalarConverter::isInt( const std::string& literalRep )
     for (int i = sign; i < literalRep.length(); i++)
         if (!isdigit(literalRep[i])) return false;
 
-    char *end;
-    long num = strtol(literalRep.c_str(), &end, 10);
-    if (*end != 0) return false;
-    if (num > INT32_MAX || num < INT32_MIN) return false;
-
     return true;
 }
 
-bool
-ScalarConverter::isFloat( const std::string& literalRep )
+static t_type get_type( const std::string& literalRep )
 {
-    bool point = false;
-    bool sign  = false;
-    bool    f = false;
+    if (literalRep.length() == 3 && literalRep[0] == '\''
+        && literalRep[3] == '\'' && (isascii(literalRep[1])))
+        return CHAR;
+    
+    else if (isInt(literalRep))
+        return INT;
 
-
-    if (literalRep == "-inff" || literalRep == "+inff" || literalRep == "nanf") return true;
-
-    if (literalRep[sign] == '+' || literalRep[sign] == '-')
+    if (literalRep == "-inff" || literalRep == "+inff" || 
+          literalRep == "nanf" || literalRep == "-inf" || 
+          literalRep == "+inf" || literalRep == "nan") return PSEUDO;
+        
+    size_t  pos = literalRep.find('.');
+        
+    if (pos)
     {
-        if ( literalRep.length() == 1)  return false;
-        sign = true;
-    }
+        std::stringstream   extract(literalRep);
+        float               f;
+        double              d;
 
-    for (int i = sign; i < literalRep.length(); i++)
-    {
-        if (!isdigit(literalRep[i]))
+        if (extract >> d && extract.get() == EOF)
+            return DOUBLE;
+        else if (extract >> f && extract.get() != EOF)
         {
-            if (literalRep[i] == '.')
-            {
-                if (point || i == 0 || (i == 1 && sign) || i == literalRep.length() - 1)
-                    return false;
-                point = true;
-            }
-            else if (literalRep[i] == 'f')
-            {
-                if (i != literalRep.length() - 1 || !literalRep[i - 1] || !isdigit(literalRep[i - 1]))
-                    return false;
-                f = true;
-            }
+            std::string remains;
 
+            extract >> remains;
+            if (remains == "f")
+                return FLOAT;
         }
 
-        else if (!isdigit(literalRep[i])) return false;
     }
 
-    if (!f || !point)
-        return false;
-    
-    char *end;
-    strtof(literalRep.c_str(), &end);
-    if (*end != 'f' || *(end + 1) != 0) return false;
-
-    return true;
-    
+    return NONE;
 }
 
-
-bool
-ScalarConverter::isDouble( const std::string& literalRep )
-{
-    bool point = false;
-    bool sign  = false;
-
-    if (literalRep == "-inf" || literalRep == "+inf" || literalRep == "nan") return true;
-
-    if (literalRep[sign] == '+' || literalRep[sign] == '-')
-    {
-        if ( literalRep.length() == 1)  return false;
-        sign = true;
-    }
-
-    for (int i = sign; i < literalRep.length(); i++)
-    {
-        if (!isdigit(literalRep[i]))
-        {
-            if (literalRep[i] == '.')
-            {
-                if (point || i == 0 || (i == 1 && sign) || i == literalRep.length() - 1)
-                    return false;
-                point = true;
-            }
-
-        }
-        else if (!isdigit(literalRep[i])) return false;
-    }
-
-    if (!point) return false;
-    
-    char *end;
-    strtod(literalRep.c_str(), &end);
-    if (*(end ) != 0)   return false;
-
-    return true;
-    
-}
-
-void
-ScalarConverter::ConvertChar( const std::string& literalRep )
+static void
+ConvertChar( const std::string& literalRep )
 {
 
     char c = literalRep[1];
@@ -157,8 +91,8 @@ ScalarConverter::ConvertChar( const std::string& literalRep )
     std::cout << std::endl;
 }
 
-void
-ScalarConverter::ConvertInt( const std::string& literalRep )
+static void
+ConvertInt( const std::string& literalRep )
 {
     int i;
     std::istringstream   extract(literalRep);
@@ -195,50 +129,51 @@ ScalarConverter::ConvertInt( const std::string& literalRep )
     std::cout << std::endl;
 }
 
+
+
 void
-ScalarConverter::ConvertFloat( const std::string& literalRep )
+ScalarConverter::convert( const std::string& literalRep )
 {
-    float  f = strtof(literalRep.c_str(), NULL);
-    char c = static_cast<char>(f);
+   t_type               type = get_type(literalRep);
+   char                 c;
+   long                 i;
+   float                f;
+   double               d;
+   bool                 impo = false;
+   bool                 err = false;
+   std::stringstream    extract(literalRep);
 
-    if (isprint(c))
-        std::cout << '\'' << c << "\'" ;
-    else   
-        std::cout << "Non displayable";
-    std::cout << std::endl;
+   if (type == CHAR)
+   {
+        c = literalRep[1];
+        i = static_cast<int>(c);
+        f = static_cast<float>(c);
+        d = static_cast<double>(c);
+    }
+   else if (type == INT)
+   {
 
-    std::cout << "Int : " << static_cast<int>(f) << std::endl;
-
-    std::cout << "Float : " << static_cast<float>(i);
-    if (static_cast<float>(i) == static_cast<int>(i))   std::cout << ".0f";
-    std::cout << std::endl;
-
-    std::cout << "Double : " << static_cast<double>(i) << std::endl;
-    if (static_cast<double>(i) == static_cast<int>(i))   std::cout << ".0";
-    std::cout << std::endl;
+        if (extract >> i)
+        {
+            if ( i > INT32_MAX || i < INT32_MIN) impo = true;
+            else if (isascii(i)) c = static_cast<char>(i);
+            else    c = -1;
+            f = static_cast<float>(i);
+            d = static_cast<double>(i);
+            
+        }
+        else
+            err = true;
+   }
+   else if (type == FLOAT)
+   {
+        if (extract >> f)
+        {
+            d = static_cast<double>(f);
+             
+        }
+   }
 }
-// int
-// ScalarConverter::error( const std::string& literalRep )
-// {
-//     for(int i = 0; literalRep[i]; )
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
