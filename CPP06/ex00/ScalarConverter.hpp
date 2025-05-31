@@ -3,14 +3,17 @@
 
 
 #include <iostream>
-#include <limits>
 #include <string>
 #include <cmath>
 #include <sstream>
+#include <cstdio>
+#include <iomanip> 
+#include <limits>
+#include <climits>
 
 
 
-typedef enum t_type
+typedef enum
 {
     CHAR,
     INT,
@@ -18,7 +21,7 @@ typedef enum t_type
     DOUBLE,
     PSEUDO,
     NONE
-};
+}  t_type;
 
 class ScalarConverter
 {
