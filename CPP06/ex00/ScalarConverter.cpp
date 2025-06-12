@@ -37,7 +37,7 @@ isInt(const std::string &literalRep)
 
 static t_type get_type(const std::string &literalRep)
 {
-    if (literalRep.length() == 3 && literalRep[0] == '\'' && literalRep[2] == '\'' && (isascii(literalRep[1])))
+    if (literalRep.length() == 1 && (isascii(literalRep[0])))
         return CHAR;
 
     else if (isInt(literalRep))
@@ -62,10 +62,8 @@ static t_type get_type(const std::string &literalRep)
         extract.seekg(0, std::ios_base::beg);
         if (extract >> f)
         {
-            std::cout << "**********" << literalRep << std::endl;
             std::string remains;
             extract >> remains;
-            std::cout << "---------------------" << remains << std::endl;
             if (remains == "f")
                 return FLOAT;
         }
@@ -79,7 +77,7 @@ void ScalarConverter::convert(const std::string &literalRep)
 
     t_type type = get_type(literalRep);
     char c;
-    long i;
+    int i;
     float f;
     double d;
     bool impo = false;
@@ -98,7 +96,6 @@ void ScalarConverter::convert(const std::string &literalRep)
         std::stringstream extract(literalRep);
         if (extract >> i)
         {
-            std::cout << i << "-----------------------------" << std::endl;
             if (i > INT_MAX || i < INT_MIN)
                 impo = true;
             else if (isascii(i))
@@ -150,18 +147,10 @@ void ScalarConverter::convert(const std::string &literalRep)
     else if (type == PSEUDO)
     {
         std::cout << "Char  : Impossible\nInt   : Impossible\n";
-        if (literalRep == "-inff")
-            std::cout << "Float : -inff\nDouble: -inf";
-        else if (literalRep == "+inff")
-            std::cout << "Float : +inff\nDouble: +inf";
-        else if (literalRep == "nanf")
-            std::cout << "Float : nanf\nDouble: nan";
-        else if (literalRep == "-inf")
-            std::cout << "Float : -inff\nDouble: -inf";
-        else if (literalRep == "+inf")
-            std::cout << "Float : +inff\nDouble: +inf";
-        else if (literalRep == "nan")
-            std::cout << "Float : nanf\nDouble: nan";
+        if (literalRep == "-inff" || literalRep == "+inff" || literalRep == "nanf")
+            std::cout << "Float : " << literalRep.substr(0, literalRep.length() - 1) << "\nDouble :" << literalRep;
+        else
+            std::cout << "Float : " << literalRep << "\nDouble :" << literalRep << "f";
         std::cout << std::endl;
         return;
     }
@@ -171,9 +160,9 @@ void ScalarConverter::convert(const std::string &literalRep)
     {
         size_t pos = literalRep.find_first_of('.');
         int precision = literalRep.length() - pos - 1;
-        if (pos == std::string::npos)
+        if (pos == std::string::npos || !precision)
             precision = 1;
-        else if (type == FLOAT)
+        else if (type == FLOAT && precision > 1)
             precision--;
         if (impo)
             std::cout << "Char   : Impossible\nInt    : Impossible\n";
@@ -189,77 +178,17 @@ void ScalarConverter::convert(const std::string &literalRep)
             std::cout << "Int    : " << i << "\n";
         }
         std::cout << std::fixed << std::setprecision(precision);
-        std::cout << "Float  : " << f;
+        std::cout << "Float  : " << static_cast<float>(d);
         std::cout << "f\n";
         std::cout << "Double : " << d;
-        std::cout << std::endl;
     }
     else
     {
-        std::cout << "Char  : Impossible\nInt   : Impossible\n"
-                  << "Float : Impossible\nDouble: Impossible\n";
+        std::cout << "Error: please enter the valid data types (char, int, float, double)!!";
     }
+    std::cout << std::endl;
 }
 
 ScalarConverter::~ScalarConverter(void)
 {
 }
-
-// static void
-// ConvertChar( const std::string& literalRep )
-// {
-
-//     char c = literalRep[1];
-//     std::cout << "Char : ";
-//     if (isprint(c)) std::cout << '\'' << c << "\'" ;
-//     else            std::cout << "Non displayable";
-//     std::cout << std::endl;
-
-//     std::cout << "Int : " << static_cast<int>(c) << std::endl;
-
-//     std::cout << "Float : " << static_cast<float>(c);
-//     if (static_cast<float>(c) == static_cast<int>(c))   std::cout << ".0f";
-//     std::cout << std::endl;
-
-//     std::cout << "Double : " << static_cast<double>(c) << std::endl;
-//     if (static_cast<double>(c) == static_cast<int>(c))   std::cout << ".0";
-//     std::cout << std::endl;
-// }
-
-// static void
-// ConvertInt( const std::string& literalRep )
-// {
-//     int i;
-//     std::istringstream   extract(literalRep);
-
-//     extract >> i;
-
-//     if (extract.fail() || !extract.eof())
-//     {
-//         std::cout << "Char: Impossible\nInt: Impossible\n"
-//                   << "Float: Impossible\nDouble: Impossible\n";
-//         return ;
-//     }
-
-//     char    c = static_cast<char>(i);
-
-//     std::cout << "Char : ";
-//     if (isprint(c) && isascii(i))
-//         std::cout << '\'' << c << "\'" ;
-//     else if (!isascii(i))
-//         std::cout << "Impossible";
-
-//     else
-//         std::cout << "Non displayable";
-//     std::cout << std::endl;
-
-//     std::cout << "Int : " << i << std::endl;
-
-//     std::cout << "Float : " << static_cast<float>(i);
-//     if (static_cast<float>(i) == static_cast<int>(i))   std::cout << ".0f";
-//     std::cout << std::endl;
-
-//     std::cout << "Double : " << static_cast<double>(i) << std::endl;
-//     if (static_cast<double>(i) == static_cast<int>(i))   std::cout << ".0";
-//     std::cout << std::endl;
-// }
