@@ -16,43 +16,28 @@ ScalarConverter::operator=(const ScalarConverter &other)
     return *this;
 }
 
-static bool
-isInt(const std::string &literalRep)
-{
-    bool sign = false;
-
-    if (literalRep[sign] == '+' || literalRep[sign] == '-')
-    {
-        if (literalRep.length() == 1)
-            return false;
-        sign = true;
-    }
-
-    for (size_t i = sign; i < literalRep.length(); i++)
-        if (!isdigit(literalRep[i]))
-            return false;
-
-    return true;
-}
-
 static t_type get_type(const std::string &literalRep)
 {
-    if (literalRep.length() == 1 && (isascii(literalRep[0])))
-        return CHAR;
-
-    else if (isInt(literalRep))
-        return INT;
+    std::stringstream   extract(literalRep);
+    int                 i;
 
     if (literalRep == "-inff" || literalRep == "+inff" ||
         literalRep == "nanf" || literalRep == "-inf" ||
         literalRep == "+inf" || literalRep == "nan")
         return PSEUDO;
 
-    size_t pos = literalRep.find('.');
+    else if (literalRep.length() == 1 && (isascii(literalRep[0])))
+        return CHAR;
 
-    if (pos)
+    else if(extract >> i && extract.get() == EOF)
+        return INT;
+
+    size_t pos = literalRep.find('.');
+        
+    if (pos != std::string::npos)
     {
-        std::stringstream extract(literalRep);
+        extract.clear();
+        extract.seekg(0, std::ios_base::beg);
         float f;
         double d;
 
@@ -75,13 +60,13 @@ static t_type get_type(const std::string &literalRep)
 void ScalarConverter::convert(const std::string &literalRep)
 {
 
-    t_type type = get_type(literalRep);
-    char c;
-    int i;
-    float f;
-    double d;
-    bool impo = false;
-    bool err = false;
+    t_type  type = get_type(literalRep);
+    char    c;
+    int     i;
+    float   f;
+    double  d;
+    bool    impo = false;
+    bool    err = false;
 
     if (type == CHAR)
     {
@@ -97,16 +82,16 @@ void ScalarConverter::convert(const std::string &literalRep)
         if (extract >> i)
         {
             if (i > INT_MAX || i < INT_MIN)
-                impo = true;
+            impo = true;
             else if (isascii(i))
-                c = static_cast<char>(i);
+            c = static_cast<char>(i);
             else
-                c = -1;
+            c = -1;
             f = static_cast<float>(i);
             d = static_cast<double>(i);
         }
         else
-            err = true;
+        err = true;
     }
     else if (type == FLOAT)
     {
@@ -115,16 +100,16 @@ void ScalarConverter::convert(const std::string &literalRep)
         {
             d = static_cast<double>(f);
             if (f > INT_MAX || f < INT_MIN)
-                impo = true;
+            impo = true;
             else
-                i = static_cast<int>(f);
+            i = static_cast<int>(f);
             if (!impo && isascii(i))
-                c = static_cast<char>(f);
+            c = static_cast<char>(f);
             else
-                c = -1;
+            c = -1;
         }
         else
-            err = true;
+        err = true;
     }
     else if (type == DOUBLE)
     {
@@ -146,11 +131,11 @@ void ScalarConverter::convert(const std::string &literalRep)
     }
     else if (type == PSEUDO)
     {
-        std::cout << "Char  : Impossible\nInt   : Impossible\n";
+        std::cout << "Char      : Impossible\nInt       : Impossible\n";
         if (literalRep == "-inff" || literalRep == "+inff" || literalRep == "nanf")
-            std::cout << "Float : " << literalRep.substr(0, literalRep.length() - 1) << "\nDouble :" << literalRep;
+            std::cout << "Float     : " << literalRep.substr(0, literalRep.length() - 1) << "\nDouble    : " << literalRep;
         else
-            std::cout << "Float : " << literalRep << "\nDouble :" << literalRep << "f";
+            std::cout << "Float     : " << literalRep << "\nDouble    : " << literalRep << "f";
         std::cout << std::endl;
         return;
     }
