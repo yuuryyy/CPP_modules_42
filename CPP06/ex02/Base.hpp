@@ -1,0 +1,16 @@
+#ifndef BASE_HPP__
+#define BASE_HPP__
+
+#include <iostream>
+#include <string>
+
+class Base 
+{
+    public :
+        virtual ~Base( void );
+};
+
+
+
+
+#endif
