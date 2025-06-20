@@ -57,7 +57,7 @@ void identify(Base& p)
         return ;
 
     }
-    catch(const std::bad_cast& e)
+    catch(const std::exception& e)
     {
         try
         {
@@ -66,7 +66,7 @@ void identify(Base& p)
             return ;
             
         }
-        catch(const std::bad_cast& e)
+        catch(const std::exception& e)
         {
             try
             {
@@ -74,7 +74,7 @@ void identify(Base& p)
                 std::cout << "The type of the object referenced by p: C" << std::endl; 
                 return ;
             }
-            catch(const std::bad_cast& e)
+            catch(const std::exception& e)
             {
                 std::cout << "The type of the object referenced by p: Base" << std::endl; 
                 return ;
