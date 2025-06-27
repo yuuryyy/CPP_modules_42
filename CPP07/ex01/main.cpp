@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 00:05:50 by ychagri           #+#    #+#             */
-/*   Updated: 2025/06/27 01:18:36 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/06/27 16:35:43 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int main()
 
     std::cout << sep << std::endl;
     ::iter(&str[0], l, printchar);
-    
 
     std::cout << std::endl;
 }
