@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 01:01:15 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/11 01:42:42 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/11 23:53:43 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main()
     vec.push_back(100);
     vec.push_back(761);
 
-    int i = 14;
+    int i = 100;
     std::vector<int>::iterator it =  easyfind(vec, i);
 
     if ( it == vec.end())
