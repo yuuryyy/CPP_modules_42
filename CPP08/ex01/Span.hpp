@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: youssra-chagri <youssra-chagri@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 21:06:14 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/15 01:31:28 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/15 19:58:51 by youssra-cha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <iterator>
 #include <list>
 #include <exception>
+#include <climits>
 
 class Span
 {
