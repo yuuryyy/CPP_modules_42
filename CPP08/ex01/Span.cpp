@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 00:46:21 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/15 01:18:43 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/15 01:30:53 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,5 @@ Span::longestSpan( void )
     return static_cast<unsigned int>(maxNum - minNum);
 }
 
-template <typename iterator>
-void    Span::addRange( iterator begin, iterator end )
-{
-    if (std::distance(begin, end) + _numbers.size() > _size)
-        throw std::exception();
-        
-    for (iterator it = begin; it != end; ++it)
-    {
-        addNumber(*it);
-    } 
-}
+
+Span::~Span( void ){}

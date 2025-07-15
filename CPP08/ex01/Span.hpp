@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 21:06:14 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/15 01:15:55 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/15 01:31:28 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
+#include <list>
 #include <exception>
 
 class Span
@@ -39,7 +40,17 @@ class Span
             unsigned int longestSpan( void );
 
             template <typename iterator>
-            void        addRange( iterator begin, iterator end ); 
+            void        addRange( iterator begin, iterator end )
+        {
+                if (std::distance(begin, end) + _numbers.size() > _size)
+                    throw std::exception();
+                    
+                for (iterator it = begin; it != end; ++it)
+                {
+                    addNumber(*it);
+                } 
+        }               
+                
         
 };
 
