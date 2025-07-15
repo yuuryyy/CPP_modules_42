@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 21:06:14 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/15 01:06:20 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/15 01:15:55 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Span
             unsigned int longestSpan( void );
 
             template <typename iterator>
-            void        addRange( iterator begin, iterator end );
+            void        addRange( iterator begin, iterator end ); 
         
 };
 
