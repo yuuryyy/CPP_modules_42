@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 00:46:21 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/15 01:13:11 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/15 01:18:43 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,5 @@ void    Span::addRange( iterator begin, iterator end )
     for (iterator it = begin; it != end; ++it)
     {
         addNumber(*it);
-    }
+    } 
 }
