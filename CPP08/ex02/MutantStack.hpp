@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:31:41 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/16 23:05:55 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/17 00:20:10 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ template<typename T>
 class MutantStack :  public std::stack<T>
 {
     private:
-        
+        MutantStack::iterator   l;    
     
     public:
         MutantStack();
