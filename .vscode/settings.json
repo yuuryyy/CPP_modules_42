@@ -74,5 +74,6 @@
 		"numbers": "cpp",
 		"ranges": "cpp"
 	},
-	"C_Cpp.default.compilerPath": "/usr/bin/g++"
+	"C_Cpp.default.compilerPath": "/usr/bin/clang++",
+	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }
