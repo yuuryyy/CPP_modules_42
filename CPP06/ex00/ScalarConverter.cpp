@@ -26,7 +26,7 @@ static t_type get_type(const std::string &literalRep)
         literalRep == "+inf" || literalRep == "nan")
         return PSEUDO;
 
-    else if (literalRep.length() == 1 && (isascii(literalRep[0])))
+    else if (literalRep.length() == 1 && (isascii(literalRep[0])) && !isdigit(literalRep[0]))
         return CHAR;
 
     else if(extract >> i && extract.get() == EOF)
@@ -36,73 +36,30 @@ static t_type get_type(const std::string &literalRep)
         
     if (pos != std::string::npos)
     {
-        std::cout << "Original input: '" << literalRep << "'" << std::endl;
-        
         extract.clear();
         extract.seekg(0, std::ios_base::beg);
+
         double d;
         bool double_success = extract >> d;
         bool double_eof = (extract.get() == EOF);
-        
-        std::cout << "Double extraction: " << (double_success ? "SUCCESS" : "FAILED") << std::endl;
-        std::cout << "Double EOF check: " << (double_eof ? "TRUE" : "FALSE") << std::endl;
         
         if (double_success && double_eof)
             return DOUBLE;
         
         if (literalRep.back() == 'f')
         {
-            std::cout << "heeeere\n";
             std::string without_suffix = literalRep.substr(0, literalRep.length() - 1);
             std::stringstream clean_stream(without_suffix);
-            std::cout << "without_suffix: '" << without_suffix << "'" << std::endl;
-            
+
             double f;
             bool float_success = clean_stream >> f;
             bool float_eof = (clean_stream.get() == EOF);
-            
-            std::cout << "Float extraction: " << (float_success ? "SUCCESS" : "FAILED") << std::endl;
-            std::cout << "Float EOF check: " << (float_eof ? "TRUE" : "FALSE") << std::endl;
-            std::cout << "Extracted value: " << f << std::endl;
-            
-            if (float_success && float_eof) {
-                std::cout << "Returning FLOAT" << std::endl;
+
+            if (float_success && float_eof)
                 return FLOAT;
-            }
         }
     }
-    std::cout << "Returning NONE" << std::endl;
-        // extract.clear();
-        // extract.seekg(0, std::ios_base::beg);
-        // double d;
 
-        // if (extract >> d && extract.get() == EOF)
-        //     return DOUBLE;
-
-        // extract.clear();
-        // extract.seekg(0, std::ios_base::beg);
-        
-
-        // if (literalRep.back() == 'f')
-        // {
-        //     std::cout<< "heeeere\n";
-        //     std::string without_suffix = literalRep.substr(0, literalRep.length() - 1);
-        //     std::stringstream clean_stream(without_suffix);
-        //     std::cout << without_suffix << std::endl;
-        //     double f;
-        //     if (clean_stream >> f && clean_stream.get() == EOF) {
-        //         return FLOAT;
-        // }
-
-        // double f;
-        // if (extract >> f)
-        // {
-        //     std::cout << "floaaaaat\n";
-        //     std::string remains;
-        //     extract >> remains;
-        //     if (remains == "f")
-        //         return FLOAT;
-        // }
     return NONE;
 }
 
@@ -144,8 +101,10 @@ void ScalarConverter::convert(const std::string &literalRep)
     }
     else if (type == FLOAT)
     {
-        literalRep = literalRep.substr(0, literalRep.length() - 1);
-        std::stringstream extract(literalRep);
+        std::string wo_suffix = literalRep.substr(0, literalRep.length() - 1);
+        std::stringstream extract(wo_suffix);
+
+        float   f;
         if (extract >> f)
         {
             d = static_cast<double>(f);
