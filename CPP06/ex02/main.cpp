@@ -18,5 +18,10 @@ int main()
     identify(bb);
     identify(&bb);
 
+    Base    *a = generate();
+
+    identify(a);
+    identify(*a);
+
     delete b;
 }
