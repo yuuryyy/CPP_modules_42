@@ -38,15 +38,18 @@ static t_type get_type(const std::string &literalRep)
     {
         extract.clear();
         extract.seekg(0, std::ios_base::beg);
-        float f;
         double d;
 
         if (extract >> d && extract.get() == EOF)
             return DOUBLE;
+
         extract.clear();
         extract.seekg(0, std::ios_base::beg);
+        
+        double f;
         if (extract >> f)
         {
+            std::cout << "floaaaaat\n";
             std::string remains;
             extract >> remains;
             if (remains == "f")
@@ -71,7 +74,7 @@ void ScalarConverter::convert(const std::string &literalRep)
     if (type == CHAR)
     {
 
-        c = literalRep[1];
+        c = literalRep[0];
         i = static_cast<int>(c);
         f = static_cast<float>(c);
         d = static_cast<double>(c);
@@ -82,11 +85,11 @@ void ScalarConverter::convert(const std::string &literalRep)
         if (extract >> i)
         {
             if (i > INT_MAX || i < INT_MIN)
-            impo = true;
+                impo = true;
             else if (isascii(i))
-            c = static_cast<char>(i);
+                c = static_cast<char>(i);
             else
-            c = -1;
+                c = -1;
             f = static_cast<float>(i);
             d = static_cast<double>(i);
         }
@@ -100,13 +103,13 @@ void ScalarConverter::convert(const std::string &literalRep)
         {
             d = static_cast<double>(f);
             if (f > INT_MAX || f < INT_MIN)
-            impo = true;
+                impo = true;
             else
-            i = static_cast<int>(f);
+                i = static_cast<int>(f);
             if (!impo && isascii(i))
-            c = static_cast<char>(f);
+                c = static_cast<char>(f);
             else
-            c = -1;
+                c = -1;
         }
         else
         err = true;
@@ -133,9 +136,9 @@ void ScalarConverter::convert(const std::string &literalRep)
     {
         std::cout << "Char      : Impossible\nInt       : Impossible\n";
         if (literalRep == "-inff" || literalRep == "+inff" || literalRep == "nanf")
-            std::cout << "Float     : " << literalRep.substr(0, literalRep.length() - 1) << "\nDouble    : " << literalRep;
+            std::cout << "Float     : " << literalRep << "\nDouble    : " << literalRep.substr(0, literalRep.length() - 1);
         else
-            std::cout << "Float     : " << literalRep << "\nDouble    : " << literalRep << "f";
+            std::cout << "Float     : " << literalRep << "f\nDouble    : " << literalRep;
         std::cout << std::endl;
         return;
     }
