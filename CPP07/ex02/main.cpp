@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youssra-chagri <youssra-chagri@student.    +#+  +:+       +#+        */
+/*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:19:51 by ychagri           #+#    #+#             */
-/*   Updated: 2025/06/29 00:58:15 by youssra-cha      ###   ########.fr       */
+/*   Updated: 2025/07/23 20:41:08 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ int main()
         std::cerr << "U accessed an index that is out of bound !" << '\n';
     }
 
-    delete[] intArray;
     return 0;
 }

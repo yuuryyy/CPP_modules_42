@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 00:05:50 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/22 20:58:31 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/23 20:30:31 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void    increment(type &data)
 {
     data++;
 }
-
 
 template<typename type>
 void    const_increment(const type &data)
@@ -41,12 +40,12 @@ int main()
     size_t l = 5;
     
     std::string sep(50, '=');
-    std::cout << sep << std::endl;
+    std::cout << "\nArray before calling increment : "<< std::endl;
     
     ::iter(arr, l, print);
     ::iter(arr, l, increment<int>);
     
-    std::cout << sep << std::endl;
+    std::cout << "\nArray after calling increment : "<< std::endl;
     ::iter(arr, l, print);
 
     const std::string str("abcdef");
@@ -57,8 +56,5 @@ int main()
     std::cout << std::endl;      
     ::iter(&str[0], l, const_increment<char>);
 
-    // std::cout << sep << std::endl;
-    // ::iter(&str[0], l, printchar);
-// 
-    // std::cout << std::endl;
+    return 0;
 }

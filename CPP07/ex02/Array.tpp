@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youssra-chagri <youssra-chagri@student.    +#+  +:+       +#+        */
+/*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:49:34 by ychagri           #+#    #+#             */
-/*   Updated: 2025/06/29 00:30:18 by youssra-cha      ###   ########.fr       */
+/*   Updated: 2025/07/23 20:41:55 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 #include "Array.hpp"
 
 template<typename T>
-Array<T>::Array( void ):_size(1)
-{
-    _data = new T[0]();
-}
+Array<T>::Array( void ):_size(1),_data(NULL) {}
 
 template<typename T>
 Array<T>::Array( unsigned int n ): _data(NULL), _size(n)
