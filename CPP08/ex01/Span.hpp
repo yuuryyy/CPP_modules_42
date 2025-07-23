@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youssra-chagri <youssra-chagri@student.    +#+  +:+       +#+        */
+/*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 21:06:14 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/15 19:58:51 by youssra-cha      ###   ########.fr       */
+/*   Updated: 2025/07/24 00:03:09 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Span
             unsigned int        _size;
             std::vector<int>    _numbers;
 
-    
+
     public :
 
             Span( void );

@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 21:28:04 by ychagri           #+#    #+#             */
-/*   Updated: 2025/07/16 00:34:31 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/24 00:01:29 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,11 @@ int main()
 
         sp2.addNumber(5);
 
+        std::cout << sep << std::endl;
+        
         std::cout << sp2.shortestSpan() << std::endl;
         std::cout << sp2.longestSpan() << std::endl;
         
-        std::cout << sep << std::endl;
     }
 
     catch ( const std::exception& e )
@@ -92,6 +93,6 @@ int main()
         std::cerr << "Span is out of range !" << std::endl;
        
     }
-    
+
     return 0;
 }
