@@ -6,13 +6,14 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:45:08 by ychagri           #+#    #+#             */
-/*   Updated: 2025/06/26 23:54:38 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/22 20:12:45 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Whatever.hpp"
+#include "whatever.hpp"
 
-int main( void ) {
+int main( void )
+{
     int a = 2;
     int b = 3;
 
@@ -20,11 +21,14 @@ int main( void ) {
     std::cout << "a = " << a << ", b = " << b << std::endl;
     std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
     std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+    
     std::string c = "chaine1";
     std::string d = "chaine2";
+    
     ::swap(c, d);
     std::cout << "c = " << c << ", d = " << d << std::endl;
     std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
     std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-    return 0;
+    
+    return 0;  
 }

@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 00:05:39 by ychagri           #+#    #+#             */
-/*   Updated: 2025/06/27 00:05:42 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/22 20:01:15 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void swap(type &a, type &b)
 }
 
 template<typename type>
-type min(type a, type b)
+type min(const type &a,const type &b)
 {
     return (b > a) ? a : b;
 }
 
 template<typename type>
-type max(type a, type b)
+type max(const type &a, const type &b)
 {
     return (a > b) ? a : b;
 }

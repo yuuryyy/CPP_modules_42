@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 00:05:50 by ychagri           #+#    #+#             */
-/*   Updated: 2025/06/27 16:35:43 by ychagri          ###   ########.fr       */
+/*   Updated: 2025/07/22 20:58:31 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void    increment(type &data)
 }
 
 
+template<typename type>
+void    const_increment(const type &data)
+{
+    std::cout << static_cast<type>(data + 1) << std::endl;
+}
+
 void    print(const int &i)
 {
     std::cout << i << std::endl;
@@ -28,8 +34,6 @@ void    printchar(const char &c)
 { 
     std::cout << c;;
 }
-
-
 
 int main()
 {
@@ -44,17 +48,17 @@ int main()
     
     std::cout << sep << std::endl;
     ::iter(arr, l, print);
-    
-    std::string str("abcdef");
+
+    const std::string str("abcdef");
     l = str.length();
     std::cout << sep << std::endl;
-    
+
     ::iter(&str[0], l, printchar);
     std::cout << std::endl;      
-    ::iter(&str[0], l, increment<char>);
+    ::iter(&str[0], l, const_increment<char>);
 
-    std::cout << sep << std::endl;
-    ::iter(&str[0], l, printchar);
-
-    std::cout << std::endl;
+    // std::cout << sep << std::endl;
+    // ::iter(&str[0], l, printchar);
+// 
+    // std::cout << std::endl;
 }
