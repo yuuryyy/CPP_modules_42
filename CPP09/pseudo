@@ -1,0 +1,41 @@
+containers available in c++98:
+    vector
+    map
+    list     : doubly-linked list 
+    deque    : double-ended queue
+    set      : collection of unique keys, sorted by keys
+    multiset : collection of keys, sorted by keys 
+    multimap : collection of key-value pairs, sorted by keys 
+
+container adapters: they provide a different interface for sequential containers:
+    stack           : adapts a container to provide stack (LIFO data structure) (uses deque by default)
+    queue           : adapts a container to provide queue (FIFO data structure)
+    priority_queue  : adapts a container to provide priority queue (uses vector)
+
+
+
+ex00 
+    i will use map because i have a pair of key and value data wich is date and value.
+
+ex01
+    i might use stack adapter which uses deque as the default underlying container , and i chose it because its a lifo structure .
+
+ex02
+    i will use vecor and list because Vector gives O(1) random access, useful for comparisons, 
+    while list allows fast insertions during the merge-insert algorithm.
+
+
+ex00 structure:
+
+        -check arg num
+        -check file permissions, existance...
+        -check if file is empty
+        -check if first line is indeed "date | value"
+        -store data in my database
+        -start storing input in the map
+        -loop over the input if an error occure i throw appropriate exception, errors that might occure:
+            -negative value
+            -incorrect input
+            -value bigger than 1000
+
+        
