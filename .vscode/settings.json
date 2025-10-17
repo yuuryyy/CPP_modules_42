@@ -72,7 +72,9 @@
 		"numeric": "cpp",
 		"random": "cpp",
 		"numbers": "cpp",
-		"ranges": "cpp"
+		"ranges": "cpp",
+		"list": "cpp",
+		"map": "cpp"
 	},
 	"C_Cpp.default.compilerPath": "/usr/bin/clang++",
 	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
