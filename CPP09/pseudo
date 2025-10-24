@@ -18,7 +18,7 @@ ex00
     i will use map because i have a pair of key and value data wich is date and value.
 
 ex01
-    i might use stack adapter which uses deque as the default underlying container , and i chose it because its a lifo structure .
+    i might use stack adapter which uses deque as the default underlying container , and i chose it because  its a lifo structure .
 
 ex02
     i will use vecor and list because Vector gives O(1) random access, useful for comparisons, 
