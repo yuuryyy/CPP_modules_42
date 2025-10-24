@@ -1,27 +1,27 @@
-NAME	:= btc
+NAME        := btc
 
-CXX		:= c++
+CXX         := g++
 
-FLAGS	:= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS    := -std=c++98 -Wall -Wextra -Werror 
 
-SRCS	:=	main.cpp
-			BitcoinExchange.cpp
+SRCS        :=  main.cpp \
+                BitcoinExchange.cpp
 
-HEADER	:= BitcoinExchange.hpp
+HEADER      := BitcoinExchange.hpp
 
-OBJS	:= $(SRCS:.cpp=.o)
+OBJS        := $(SRCS:.cpp=.o)
 
-RM		:= rm -rf
+RM          := rm -rf
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CXX) $(FLAGS) -o $@ $^
+	@$(CXX) $(CXXFLAGS) -o $@ $^
 	@echo "Compilation complete: $(NAME)"
 	@echo "Executable: $(NAME)"
 
 %.o: %.cpp $(HEADER)
-	@$(CXX) $(FLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 	@echo "Compiling: $<"
 
 clean:
@@ -38,4 +38,4 @@ re: fclean all
 	@echo "Recompiling..."
 	@echo "Recompilation complete."
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
