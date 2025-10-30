@@ -48,16 +48,12 @@ void PmergeMe::parseAndInsert(int argc, char **argv)
             _vector.push_back(int_value);
             _list.push_back(int_value);
         }
-        else
-            throw std::invalid_argument("duplicate value");
+
     }
 
     if (_vector.empty())
         throw std::invalid_argument("no valid numbers found");
-    std::vector<int> sorted_vector = _vector;
-    std::sort(sorted_vector.begin(), sorted_vector.end());
-    if (sorted_vector == _vector)
-        throw std::invalid_argument("input is already sorted");
+
 }
 
 
@@ -167,17 +163,11 @@ PmergeMe::sortAndPrint(int argc, char **argv)
 {
     parseAndInsert(argc, argv);
 
-    std::cout << "Unsorted vector: ";
+    std::cout << "Before: ";
     for (size_t i = 0; i < _vector.size(); ++i) {
         std::cout << _vector[i] << " ";
     }
     std::cout << std::endl;
-
-    std::cout << "Unsorted list: ";
-    for (std::list<int>::const_iterator it = _list.begin(); it != _list.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl << "=====================================================================================" << std::endl;
 
     timeval start_vec, end_vec;
     gettimeofday(&start_vec, NULL);
@@ -189,17 +179,11 @@ PmergeMe::sortAndPrint(int argc, char **argv)
     fordJohnsonlist(_list);
     gettimeofday(&end_list, NULL);
 
-    std::cout << "Sorted vector: ";
+    std::cout << "After: ";
     for (size_t i = 0; i < _vector.size(); ++i) {
         std::cout << _vector[i] << " ";
     }
     std::cout << std::endl;
-
-    std::cout << "Sorted list: ";
-    for (std::list<int>::const_iterator it = _list.begin(); it != _list.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl << "=====================================================================================" << std::endl;
 
     long seconds_vec = end_vec.tv_sec - start_vec.tv_sec;
     long micros_vec = end_vec.tv_usec - start_vec.tv_usec;
@@ -210,7 +194,7 @@ PmergeMe::sortAndPrint(int argc, char **argv)
     _listTime = seconds_list * 1000000.0 + micros_list;
 
 
-    std::cout << "Time taken for std::vector to sort " << _vector.size() << " elements: " << _vectorTime << " microseconds" << std::endl;
-    std::cout << "Time taken for std::list to sort " << _list.size() << " elements: " << _listTime << " microseconds" << std::endl;
+    std::cout << "Time to process a range of " << _vector.size() << "  elements with std::vector : " << _vectorTime << " microseconds" << std::endl;
+    std::cout << "Time to process a range of " << _list.size() << "  elements with std::list : " << _listTime << " microseconds" << std::endl;
 }
 

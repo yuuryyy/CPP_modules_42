@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuury <yuury@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 01:04:23 by yuury             #+#    #+#             */
-/*   Updated: 2025/10/24 19:50:04 by yuury            ###   ########.fr       */
+/*   Updated: 2025/10/30 22:13:43 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ BitcoinExchange::_dateParser(const std::string &date)
         default:
             return false;
     }
+    
+    if (day > monthdays)
+        return false;
     return true;
 }
 
@@ -117,7 +120,7 @@ BitcoinExchange::searchDatabase(const std::string &date, double value)
         }
         it--;
     }
-    std::cout << date << " => " << value << " => " << value * it->second << std::endl; 
+    std::cout << date << " => " << value << " = " << value * it->second << std::endl; 
     
 }
 
@@ -128,14 +131,14 @@ BitcoinExchange::_extractDataBase( void )
     std::ifstream dataBase(DATABASE);
 
     if (dataBase.is_open() == false)
-        throw "Data base file Can't be read!";
+        throw std::runtime_error("Data base file Can't be read!");
     
     std::string line;
     std::string date;
     std::string val;
 
     if (!std::getline(dataBase, line))
-        throw "Data base file is empty!";
+        throw std::runtime_error("Data base file is empty!");
     while(std::getline(dataBase, line))
     {
         size_t pos = line.find(',');
@@ -152,10 +155,10 @@ BitcoinExchange::inputProcessing(const std::string &filName)
     std::ifstream input(filName.c_str());
 
     if (!input.is_open())
-        throw "Input file can't be opened!";
+        throw std::runtime_error("could not open file.");
     std::string line;
     if (!std::getline(input, line) || line != "date | value")
-        throw "Invalid/Empty input file!";
+        throw std::runtime_error("first line must be date | value.");
 
     std::string date;
     std::string val;
@@ -164,23 +167,34 @@ BitcoinExchange::inputProcessing(const std::string &filName)
     {
         line = _trim(line);
         size_t pos = line.find(" | ");
+        if (line.empty())
+            continue;
         if (pos == std::string::npos)
         {
-            std::cerr << "Error: bad line format!" << std::endl;
+            std::cerr << "Error: bad input => "<< line << std::endl;
             continue;
         }
         date = line.substr(0, pos);
         val = line.substr(pos + 3);
+        if (val.find_first_not_of("0123456789.-+") != std::string::npos)
+        {
+            std::cerr << "Error: bad input => "<< line << std::endl;
+            continue;
+        }
         value = to_float(val);
         if (!_dateParser(date) || (value < 0 || value > 1000))
         {
-            std::cerr << "Error: invalid date/value!" << std::endl;
+            if (!_dateParser(date))
+                std::cerr << "Error: bad input => "<< line << std::endl;
+            else if (value < 0)
+                std::cerr << "Error: not a positive number." << std::endl;
+            else
+                std::cerr << "Error: too large a number." << std::endl;
             continue;
         }
         searchDatabase(date, value);   
     }
 
-    
 }
 
 void
@@ -191,9 +205,9 @@ BitcoinExchange::btc(const std::string &inputfName )
         _extractDataBase();
         inputProcessing(inputfName); 
     }
-    catch(const char *msg)
+    catch(const std::runtime_error &msg)
     {
-        std::cerr << msg << '\n';
+        std::cerr <<"Error: " << msg.what() << std::endl;
     }
 
 }
